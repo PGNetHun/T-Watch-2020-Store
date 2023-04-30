@@ -1,0 +1,23 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000"
+    },
+    "items": [
+        {
+            "type": "gif",
+            "file": "tesseract.gif",
+            "align": "BOTTOM_MID",
+            "y": -10
+        },
+        {
+            "type": "label",
+            "font": "LCD-80.font",
+            "color": "#2F5D98",
+            "align": "TOP_MID",
+            "x": 0,
+            "y": 20,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

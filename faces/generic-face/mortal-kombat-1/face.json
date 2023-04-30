@@ -1,0 +1,41 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "mortal-kombat.jpg"
+    },
+    "items": [
+        {
+            "type": "gif",
+            "file": "subzero.gif",
+            "align": "BOTTOM_LEFT",
+            "x": 5,
+            "y": -20
+        },
+        {
+            "type": "gif",
+            "file": "scorpion.gif",
+            "align": "BOTTOM_RIGHT",
+            "x": -5,
+            "y": -20
+        },
+        {
+            "type": "label",
+            "font": "mortalkombat2-44.font",
+            "color": "#000000",
+            "align": "BOTTOM_MID",
+            "x": 3,
+            "y": -12,
+            "text": "{HH}:{mm}"
+        },
+        {
+            "type": "label",
+            "font": "mortalkombat2-44.font",
+            "color": "#FFFFFF",
+            "align": "BOTTOM_MID",
+            "x": 0,
+            "y": -15,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

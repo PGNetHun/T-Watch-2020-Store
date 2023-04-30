@@ -1,0 +1,27 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-16.font",
+            "color": "#FFFFFF",
+            "align": "TOP_MID",
+            "textalign": "CENTER",
+            "x": 0,
+            "y": 10,
+            "text": "\"All right, but apart\nfrom the sanitation,\nthe medicine, education,\nwine, public order,\nirrigation, roads,\na fresh water system,\nand public health,\nwhat have the Romans\nEVER done for us?\""
+        },
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-32.font",
+            "color": "#FFFFFF",
+            "align": "BOTTOM_MID",
+            "x": 0,
+            "y": -5,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "spaghetti.jpg"
+    },
+    "items": [
+        {
+            "type": "handle",
+            "source": "minute",
+            "image": "fork.png",
+            "align": "CENTER",
+            "pivot_x": 8,
+            "pivot_y": 109
+        },
+        {
+            "type": "handle",
+            "source": "hour",
+            "image": "spoon.png",
+            "align": "CENTER",
+            "pivot_x": 11,
+            "pivot_y": 114
+        }
+    ]
+}

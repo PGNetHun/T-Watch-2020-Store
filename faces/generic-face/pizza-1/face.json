@@ -1,0 +1,25 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "pizza.jpg"
+    },
+    "items": [
+        {
+            "type": "handle",
+            "source": "hour",
+            "image": "fork.png",
+            "align": "CENTER",
+            "pivot_x": 8,
+            "pivot_y": 119
+        },
+        {
+            "type": "handle",
+            "source": "minute",
+            "image": "knife.png",
+            "align": "CENTER",
+            "pivot_x": 7,
+            "pivot_y": 131
+        }
+    ]
+}

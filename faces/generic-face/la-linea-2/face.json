@@ -1,0 +1,23 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000C9A"
+    },
+    "items": [
+        {
+            "type": "gif",
+            "file": "lalinea.gif",
+            "align": "RIGHT_MID",
+            "y": 30
+        },
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-32.font",
+            "color": "#FFFFFF",
+            "align": "CENTER",
+            "x": -50,
+            "y": 45,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

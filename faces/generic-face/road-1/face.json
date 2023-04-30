@@ -1,0 +1,23 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000"
+    },
+    "items": [
+        {
+            "type": "gif",
+            "file": "road.gif",
+            "align": "BOTTOM_MID",
+            "y": 0
+        },
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-32.font",
+            "color": "#FFFFFF",
+            "align": "CENTER",
+            "x": 0,
+            "y": -35,
+            "text": "{HH}:{mm}:{ss}"
+        }
+    ]
+}

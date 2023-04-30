@@ -1,0 +1,29 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000"
+    },
+    "items": [
+        {
+            "type": "gif",
+            "file": "earth.gif",
+            "align": "CENTER"
+        },
+        {
+            "type": "handle",
+            "source": "hour",
+            "image": "iss.png",
+            "align": "CENTER",
+            "pivot_x": 32,
+            "pivot_y": 120
+        },
+        {
+            "type": "handle",
+            "source": "minute",
+            "image": "spaceshuttle.png",
+            "align": "CENTER",
+            "pivot_x": 24,
+            "pivot_y": 100
+        }
+    ]
+}

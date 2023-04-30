@@ -1,0 +1,28 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000"
+    },
+    "items": [
+        {
+            "type": "image",
+            "file": "win95.jpg",
+            "align": "BOTTOM_MID",
+            "y": -5
+        },
+        {
+            "type": "gif",
+            "file": "win95-anim.gif",
+            "align": "BOTTOM_MID",
+            "y": 0
+        },
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-32.font",
+            "color": "#FFFFFF",
+            "align": "TOP_MID",
+            "y": 15,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

@@ -1,0 +1,57 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "face.png"
+    },
+    "items": [
+        {
+            "type": "handle",
+            "source": "hour",
+            "image": "hour_shadow.png",
+            "align": "CENTER",
+            "pivot_x": 12,
+            "pivot_y": 70
+        },
+        {
+            "type": "handle",
+            "source": "hour",
+            "image": "hour.png",
+            "align": "CENTER",
+            "pivot_x": 7,
+            "pivot_y": 65
+        },
+        {
+            "type": "handle",
+            "source": "minute",
+            "image": "minute_shadow.png",
+            "align": "CENTER",
+            "pivot_x": 13,
+            "pivot_y": 104
+        },
+        {
+            "type": "handle",
+            "source": "minute",
+            "image": "minute.png",
+            "align": "CENTER",
+            "pivot_x": 6,
+            "pivot_y": 99
+        },
+        {
+            "type": "handle",
+            "source": "second",
+            "image": "second_shadow.png",
+            "align": "CENTER",
+            "pivot_x": 17,
+            "pivot_y": 104
+        },
+        {
+            "type": "handle",
+            "source": "second",
+            "image": "second.png",
+            "align": "CENTER",
+            "pivot_x": 11,
+            "pivot_y": 104
+        }
+    ]
+}

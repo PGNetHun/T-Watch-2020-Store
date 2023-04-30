@@ -1,0 +1,23 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000"
+    },
+    "items": [
+        {
+            "type": "gif",
+            "file": "kitt.gif",
+            "align": "CENTER",
+            "y": 60
+        },
+        {
+            "type": "label",
+            "font": "RUBEN-50.font",
+            "color": "#FE1B02",
+            "align": "CENTER",
+            "x": 0,
+            "y": -30,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}
