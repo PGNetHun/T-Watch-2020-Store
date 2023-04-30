@@ -1,0 +1,18 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "asterix-60.font",
+            "color": "#FFDD00",
+            "align": "CENTER",
+            "x": -40,
+            "y": -50,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

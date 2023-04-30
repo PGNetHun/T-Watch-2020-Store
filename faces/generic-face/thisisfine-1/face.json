@@ -1,0 +1,18 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.jpg"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "MontserratSemibold-32.font",
+            "color": "#000000",
+            "align": "CENTER",
+            "x": 60,
+            "y": -74,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

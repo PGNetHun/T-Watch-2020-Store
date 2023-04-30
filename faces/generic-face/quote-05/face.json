@@ -1,0 +1,26 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-14.font",
+            "color": "#FAFAFA",
+            "align": "TOP_MID",
+            "x": 0,
+            "y": 15,
+            "text": "\"Our most basic common\nlink is that we all inhabit\nthis small planet.\nWe all breathe the same air.\nWe all cherish our\nchildren's future.\nAnd we are all mortal.\"\n1963, Washington D.C.\nJohn F. Kennedy"
+        },
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-60.font",
+            "color": "#FAFAFA",
+            "align": "BOTTOM_MID",
+            "x": 0,
+            "y": 0,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

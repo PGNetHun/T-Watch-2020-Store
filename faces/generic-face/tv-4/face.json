@@ -1,0 +1,28 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "FutureSocialism-18.font",
+            "color": "#FF0000",
+            "align": "CENTER",
+            "textalign": "CENTER",
+            "x": 0,
+            "y": -40,
+            "text": "Brainwashing"
+        },
+        {
+            "type": "label",
+            "font": "FutureSocialism-40.font",
+            "color": "#FF0000",
+            "align": "CENTER",
+            "x": 0,
+            "y": 10,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

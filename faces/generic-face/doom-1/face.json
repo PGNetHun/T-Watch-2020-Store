@@ -1,0 +1,36 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.jpg"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "BloodLust-80.font",
+            "color": "#DB8D8E",
+            "align": "CENTER",
+            "x": -1,
+            "y": -61,
+            "text": "{HH}:{mm}"
+        },
+        {
+            "type": "label",
+            "font": "BloodLust-80.font",
+            "color": "#650000",
+            "align": "CENTER",
+            "x": 2,
+            "y": -58,
+            "text": "{HH}:{mm}"
+        },
+        {
+            "type": "label",
+            "font": "BloodLust-80.font",
+            "color": "#880000",
+            "align": "CENTER",
+            "x": 0,
+            "y": -60,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

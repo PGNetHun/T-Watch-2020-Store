@@ -1,0 +1,27 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "MontserratMedium-16.font",
+            "color": "#F1F2F2",
+            "align": "LEFT_MID",
+            "x": 12,
+            "y": -14,
+            "text": "{day}"
+        },
+        {
+            "type": "label",
+            "font": "MontserratMedium-16.font",
+            "color": "#8899A6",
+            "align": "LEFT_MID",
+            "x": 12,
+            "y": 15,
+            "text": "{HH}:{mm} - {month_short} {DD}, {YYYY}"
+        }
+    ]
+}

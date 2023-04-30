@@ -1,0 +1,35 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#0000AA"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "ModernDOS8x16-40.font",
+            "color": "#FFFFFF",
+            "align": "TOP_MID",
+            "x": 0,
+            "y": 30,
+            "text": "{HH}:{mm}"
+        },
+        {
+            "type": "label",
+            "font": "ModernDOS8x16-16.font",
+            "color": "#FFFFFF",
+            "align": "TOP_MID",
+            "x": -23,
+            "y": 85,
+            "text": "An error has occured.\nTo continue:\n\nPress Enter to return\nto Windows, or\n\nPress CTRL+ALT+DEL to\nrestart your watch."
+        },
+        {
+            "type": "label",
+            "font": "ModernDOS8x16-16.font",
+            "color": "#FFFFFF",
+            "align": "BOTTOM_MID",
+            "x": 0,
+            "y": -10,
+            "text": "Press any key to continue _"
+        }
+    ]
+}

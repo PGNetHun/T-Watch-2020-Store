@@ -1,0 +1,18 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "Jennifers-Hand-Writing-40.font",
+            "color": "#FF0000",
+            "align": "CENTER",
+            "x": 0,
+            "y": -45,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

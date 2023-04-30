@@ -1,0 +1,18 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "HarlowSolidPlain-60.font",
+            "color": "#E4E3DF",
+            "align": "CENTER",
+            "x": 0,
+            "y": -70,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

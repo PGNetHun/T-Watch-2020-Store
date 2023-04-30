@@ -1,0 +1,26 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-14.font",
+            "color": "#FAFAFA",
+            "align": "TOP_MID",
+            "x": 0,
+            "y": 30,
+            "text": "\"War is when the government\ntells you who the bad guy is.\nRevolution is when\nyou decide that for yourself.\"\n\nBenjamin Franklin"
+        },
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-60.font",
+            "color": "#FAFAFA",
+            "align": "BOTTOM_MID",
+            "x": 0,
+            "y": -20,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

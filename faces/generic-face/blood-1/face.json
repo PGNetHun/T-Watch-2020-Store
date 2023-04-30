@@ -1,0 +1,36 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "Bloodyterror-60.font",
+            "color": "#DB8D8E",
+            "align": "CENTER",
+            "x": -1,
+            "y": 51,
+            "text": "{HH}:{mm}"
+        },
+        {
+            "type": "label",
+            "font": "Bloodyterror-60.font",
+            "color": "#650000",
+            "align": "CENTER",
+            "x": 3,
+            "y": 47,
+            "text": "{HH}:{mm}"
+        },
+        {
+            "type": "label",
+            "font": "Bloodyterror-60.font",
+            "color": "#880000",
+            "align": "CENTER",
+            "x": 0,
+            "y": 50,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

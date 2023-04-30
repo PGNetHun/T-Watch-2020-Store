@@ -1,0 +1,27 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "LCD-70.font",
+            "color": "#CE1919",
+            "align": "TOP_LEFT",
+            "x": 20,
+            "y": 15,
+            "text": "{HH}"
+        },
+        {
+            "type": "label",
+            "font": "LCD-70.font",
+            "color": "#CE1919",
+            "align": "TOP_RIGHT",
+            "x": -20,
+            "y": 15,
+            "text": "{mm}"
+        }
+    ]
+}

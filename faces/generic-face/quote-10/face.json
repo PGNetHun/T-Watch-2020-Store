@@ -1,0 +1,26 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-20.font",
+            "color": "#FAFAFA",
+            "align": "TOP_MID",
+            "x": 0,
+            "y": 15,
+            "text": "\"A nuclear war\ncannot be won\nand must\nnever be fought.\"\n1985, Geneva\nReagan & Gorbachev"
+        },
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-60.font",
+            "color": "#FAFAFA",
+            "align": "BOTTOM_MID",
+            "x": 0,
+            "y": 0,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

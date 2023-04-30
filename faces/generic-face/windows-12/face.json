@@ -1,0 +1,18 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "Timeless-Bold-36.font",
+            "color": "#000000",
+            "align": "CENTER",
+            "x": 0,
+            "y": 96,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

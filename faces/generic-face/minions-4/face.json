@@ -1,0 +1,18 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.jpg"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "Banana-50.font",
+            "color": "#EBC452",
+            "align": "CENTER",
+            "x": 0,
+            "y": 75,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

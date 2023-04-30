@@ -1,0 +1,18 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "SuperMario256-50.font",
+            "color": "#214AD7",
+            "align": "CENTER",
+            "x": 0,
+            "y": -60,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

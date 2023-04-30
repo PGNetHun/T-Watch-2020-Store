@@ -1,0 +1,18 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "Television-50.font",
+            "color": "#A7ACA8",
+            "align": "TOP_MID",
+            "x": -22,
+            "y": 100,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

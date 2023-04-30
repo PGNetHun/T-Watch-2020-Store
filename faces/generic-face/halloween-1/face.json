@@ -1,0 +1,18 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "Halloween-Too-40.font",
+            "color": "#E1D3B4",
+            "align": "CENTER",
+            "x": 10,
+            "y": -12,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

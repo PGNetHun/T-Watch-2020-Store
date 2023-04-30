@@ -1,0 +1,36 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "SFMono-Regular-20.font",
+            "color": "#000000",
+            "align": "LEFT_MID",
+            "x": 10,
+            "y": -70,
+            "text": "watch:~ you$ time"
+        },
+        {
+            "type": "label",
+            "font": "SFMono-Regular-28.font",
+            "color": "#000000",
+            "align": "LEFT_MID",
+            "x": 10,
+            "y": -10,
+            "text": "{HH}:{mm}"
+        },
+        {
+            "type": "label",
+            "font": "SFMono-Regular-28.font",
+            "color": "#000000",
+            "align": "LEFT_MID",
+            "x": 10,
+            "y": 20,
+            "text": "{YYYY}-{MM}-{DD}"
+        }
+    ]
+}

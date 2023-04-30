@@ -1,0 +1,18 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "UrbanHeroes-48.font",
+            "color": "#080808",
+            "align": "TOP_MID",
+            "x": 12,
+            "y": 92,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

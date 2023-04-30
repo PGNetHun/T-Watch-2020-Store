@@ -1,0 +1,36 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-30.font",
+            "color": "#000000",
+            "align": "LEFT_MID",
+            "x": 5,
+            "y": 81,
+            "text": "Time: {HH}:{mm}"
+        },
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-16.font",
+            "color": "#000000",
+            "align": "LEFT_MID",
+            "x": 40,
+            "y": 111,
+            "text": "Date: {YYYY}-{MM}-{DD}"
+        },
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-16.font",
+            "color": "#FFFFFF",
+            "align": "CENTER",
+            "x": -105,
+            "y": 111,
+            "text": "{battery_percent}"
+        }
+    ]
+}

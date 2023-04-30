@@ -1,0 +1,27 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#558954",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "windows_command_prompt-70.font",
+            "color": "#060E06",
+            "align": "TOP_MID",
+            "x": 40,
+            "y": 26,
+            "text": "{HH}:{mm}"
+        },
+        {
+            "type": "label",
+            "font": "windows_command_prompt-24.font",
+            "color": "#060E06",
+            "align": "TOP_RIGHT",
+            "x": -30,
+            "y": 1,
+            "text": "{battery_percent}%"
+        }
+    ]
+}

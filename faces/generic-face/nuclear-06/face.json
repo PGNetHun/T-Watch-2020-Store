@@ -1,0 +1,39 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.jpg"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "Fake-News-70.font",
+            "color": "#D4B208",
+            "align": "TOP_LEFT",
+            "textalign": "CENTER",
+            "x": 5,
+            "y": 15,
+            "text": "{HH}:{mm}"
+        },
+        {
+            "type": "label",
+            "font": "Fake-News-30.font",
+            "color": "#D4B208",
+            "align": "LEFT_MID",
+            "textalign": "CENTER",
+            "x": 10,
+            "y": 50,
+            "text": "{day_short}"
+        },
+        {
+            "type": "label",
+            "font": "Fake-News-30.font",
+            "color": "#D4B208",
+            "align": "BOTTOM_LEFT",
+            "textalign": "CENTER",
+            "x": 10,
+            "y": -10,
+            "text": "{battery_percent} %"
+        }
+    ]
+}

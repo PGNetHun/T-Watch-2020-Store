@@ -1,0 +1,27 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#5F53FE",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "ModernDOS8x8-22.font",
+            "color": "#5F53FE",
+            "align": "LEFT_MID",
+            "x": 20,
+            "y": -10,
+            "text": "10 PRINT TIME$\n\n20 PRINT BATTERY$\n\n30 SLEEP 60\n\n40 GOTO  10"
+        },
+        {
+            "type": "label",
+            "font": "ModernDOS8x8-32.font",
+            "color": "#5F53FE",
+            "align": "LEFT_MID",
+            "x": 20,
+            "y": 80,
+            "text": "{HH}:{mm}\n{battery_percent}%"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#1A2119",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "Fontana-64.font",
+            "color": "#1D4046",
+            "align": "CENTER",
+            "x": 0,
+            "y": 0,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

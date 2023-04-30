@@ -1,0 +1,18 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "christmas-70.font",
+            "color": "#F5E206",
+            "align": "TOP_MID",
+            "x": 0,
+            "y": 0,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

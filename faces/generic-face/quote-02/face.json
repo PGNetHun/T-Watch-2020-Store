@@ -1,0 +1,26 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-16.font",
+            "color": "#FAFAFA",
+            "align": "TOP_MID",
+            "x": 0,
+            "y": 10,
+            "text": "\"The hate of men will pass,\nand dictators die.\n... and so long as men die,\nliberty will never perish...\"\n\nThe Great Dictator, 1940\nCharlie Chaplin"
+        },
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-60.font",
+            "color": "#FAFAFA",
+            "align": "BOTTOM_MID",
+            "x": 0,
+            "y": -5,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

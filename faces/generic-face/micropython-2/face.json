@@ -1,0 +1,26 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-14.font",
+            "color": "#FBFBFB",
+            "align": "TOP_MID",
+            "x": 0,
+            "y": 30,
+            "text": "import time\nt = time.localtime()\nprint(time.strftime(\"%H:%M\", t))"
+        },
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-40.font",
+            "color": "#FBFBFB",
+            "align": "CENTER",
+            "x": 0,
+            "y": 30,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

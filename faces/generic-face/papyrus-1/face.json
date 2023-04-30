@@ -1,0 +1,27 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.jpg"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "DrunkenSailor-60.font",
+            "color": "#000000",
+            "align": "CENTER",
+            "x": -5,
+            "y": -15,
+            "text": "{HH}:{mm}"
+        },
+        {
+            "type": "label",
+            "font": "DrunkenSailor-32.font",
+            "color": "#000000",
+            "align": "CENTER",
+            "x": -5,
+            "y": 30,
+            "text": "{YYYY}-{MM}-{DD}"
+        }
+    ]
+}

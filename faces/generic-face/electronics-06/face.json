@@ -1,0 +1,18 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.jpg"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "Digital7Mono-70.font",
+            "color": "#0C0C0C",
+            "align": "CENTER",
+            "x": -40,
+            "y": -85,
+            "text": "{HH}{mm}"
+        }
+    ]
+}

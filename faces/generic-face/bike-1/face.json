@@ -1,0 +1,18 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "Chain-Style-fixed-64.font",
+            "color": "#FFFFFF",
+            "align": "TOP_MID",
+            "x": 0,
+            "y": 15,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

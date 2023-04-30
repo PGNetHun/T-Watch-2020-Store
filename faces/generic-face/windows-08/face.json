@@ -1,0 +1,35 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#0078D7"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "Roboto-Regular-50.font",
+            "color": "#FFFFFF",
+            "align": "TOP_MID",
+            "x": -90,
+            "y": 30,
+            "text": ":("
+        },
+        {
+            "type": "label",
+            "font": "Roboto-Regular-40.font",
+            "color": "#FFFFFF",
+            "align": "TOP_MID",
+            "x": 5,
+            "y": 35,
+            "text": "{HH}:{mm}"
+        },
+        {
+            "type": "label",
+            "font": "Roboto-Regular-16.font",
+            "color": "#FFFFFF",
+            "align": "TOP_MID",
+            "x": 0,
+            "y": 105,
+            "text": "Your watch ran into a problem \nand needs to restart. \nWe're just collecting \nsome error info, and then \nwe'll restart for you.\n\n{battery_percent}% complete"
+        }
+    ]
+}

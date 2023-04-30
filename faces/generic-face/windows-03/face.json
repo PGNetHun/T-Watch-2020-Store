@@ -1,0 +1,18 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "Selawik-70.font",
+            "color": "#FCFCFC",
+            "align": "CENTER",
+            "x": 0,
+            "y": 45,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

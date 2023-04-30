@@ -1,0 +1,17 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "LCD-80.font",
+            "color": "#FF0000",
+            "align": "CENTER",
+            "x": 0,
+            "y": 0,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

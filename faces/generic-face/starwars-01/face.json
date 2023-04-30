@@ -1,0 +1,18 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "Starjedi-54.font",
+            "color": "#FFFFFF",
+            "align": "CENTER",
+            "x": 0,
+            "y": -20,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

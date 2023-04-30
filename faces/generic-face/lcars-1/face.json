@@ -1,0 +1,36 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "Okuda-28.font",
+            "color": "#98ABFF",
+            "align": "TOP_RIGHT",
+            "x": -5,
+            "y": 0,
+            "text": "{YYYY}-{MM}-{DD}"
+        },
+        {
+            "type": "label",
+            "font": "Okuda-80.font",
+            "color": "#FF9934",
+            "align": "TOP_MID",
+            "x": 3,
+            "y": 77,
+            "text": "{HH}:{mm}"
+        },
+        {
+            "type": "label",
+            "font": "Okuda-40.font",
+            "color": "#E54545",
+            "align": "BOTTOM_RIGHT",
+            "x": -5,
+            "y": -25,
+            "text": "{battery_percent}%"
+        }
+    ]
+}

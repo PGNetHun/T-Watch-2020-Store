@@ -1,0 +1,18 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "Roboto-Bold-48.font",
+            "color": "#FFCC00",
+            "align": "LEFT_MID",
+            "x": 25,
+            "y": -5,
+            "text": "{HH}\n{mm}"
+        }
+    ]
+}

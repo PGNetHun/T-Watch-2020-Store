@@ -1,0 +1,17 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "DS-TERM-28.font",
+            "color": "#2FFBB1",
+            "align": "CENTER",
+            "x": 0,
+            "y": 0,
+            "text": "Restart in\n{HH} minutes\n\nDeleting files\n{mm} %\n\nDownloading virus\n{ss} %"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#1D1D1D",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "southpark-60.font",
+            "color": "#FEFEFE",
+            "align": "CENTER",
+            "x": 0,
+            "y": -20,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

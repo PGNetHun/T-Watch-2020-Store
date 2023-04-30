@@ -1,0 +1,26 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-50.font",
+            "color": "#FFFFFF",
+            "align": "CENTER",
+            "x": 0,
+            "y": -30,
+            "text": "{HH}:{mm}"
+        },
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-32.font",
+            "color": "#FFFFFF",
+            "align": "CENTER",
+            "x": 0,
+            "y": 50,
+            "text": "Take a <br />"
+        }
+    ]
+}

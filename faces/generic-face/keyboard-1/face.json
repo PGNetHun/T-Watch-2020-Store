@@ -1,0 +1,18 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-24.font",
+            "color": "#939292",
+            "align": "CENTER",
+            "x": 0,
+            "y": 92,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

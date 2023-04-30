@@ -1,0 +1,27 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-20.font",
+            "color": "#FAFAFA",
+            "align": "TOP_MID",
+            "textalign": "CENTER",
+            "x": 0,
+            "y": 20,
+            "text": "\"Oft hope is born\nwhen all is forlorn.\"\n\nLord of The Rings\nJ. R. R. Tolkien"
+        },
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-60.font",
+            "color": "#FAFAFA",
+            "align": "BOTTOM_MID",
+            "x": 0,
+            "y": -10,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

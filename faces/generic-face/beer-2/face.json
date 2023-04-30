@@ -1,0 +1,18 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.jpg"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "drunkcompany-100.font",
+            "color": "#000000",
+            "align": "CENTER",
+            "x": 0,
+            "y": 30,
+            "text": "{HH}-{mm}"
+        }
+    ]
+}

@@ -1,0 +1,27 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "FoxCavalier-50.font",
+            "color": "#2E2E2E",
+            "align": "CENTER",
+            "x": -5,
+            "y": -25,
+            "text": "{HH}:{mm}"
+        },
+        {
+            "type": "label",
+            "font": "FoxCavalier-40.font",
+            "color": "#2E2E2E",
+            "align": "CENTER",
+            "x": -30,
+            "y": 68,
+            "text": "{day_short}"
+        }
+    ]
+}

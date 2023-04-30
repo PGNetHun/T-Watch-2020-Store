@@ -1,0 +1,45 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "LCD-60.font",
+            "color": "#4B7256",
+            "align": "TOP_RIGHT",
+            "x": -15,
+            "y": 20,
+            "text": "88:88"
+        },
+        {
+            "type": "label",
+            "font": "LCD-60.font",
+            "color": "#000000",
+            "align": "TOP_RIGHT",
+            "x": -15,
+            "y": 20,
+            "text": "{HH}:{mm}"
+        },
+        {
+            "type": "label",
+            "font": "LCD-32.font",
+            "color": "#4B7256",
+            "align": "TOP_RIGHT",
+            "x": -15,
+            "y": 70,
+            "text": "8888-88-88"
+        },
+        {
+            "type": "label",
+            "font": "LCD-32.font",
+            "color": "#000000",
+            "align": "TOP_RIGHT",
+            "x": -15,
+            "y": 70,
+            "text": "{YYYY}-{MM}-{DD}"
+        }
+    ]
+}

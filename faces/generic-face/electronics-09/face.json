@@ -1,0 +1,18 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "UbuntuMono-Regular-60.font",
+            "color": "#04FC04",
+            "align": "TOP_RIGHT",
+            "x": -30,
+            "y": 10,
+            "text": "{HH}\n{mm}"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "DS-TERM-50.font",
+            "color": "#2FFBB1",
+            "align": "CENTER",
+            "x": 0,
+            "y": -40,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

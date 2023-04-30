@@ -1,0 +1,27 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "DS-DIGIB-60.font",
+            "color": "#2582ff",
+            "align": "CENTER",
+            "x": 0,
+            "y": -65,
+            "text": "{HH}:{mm}"
+        },
+        {
+            "type": "label",
+            "font": "DS-DIGIB-34.font",
+            "color": "#f2a519",
+            "align": "CENTER",
+            "textalign": "CENTER",
+            "x": 0,
+            "y": 40,
+            "text": "Have you tried\nturning it off\nand on again ?"
+        }
+    ]
+}

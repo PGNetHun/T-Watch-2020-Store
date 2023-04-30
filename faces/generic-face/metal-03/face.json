@@ -1,0 +1,36 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.jpg"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "FoxCavalier-50.font",
+            "color": "#2E2E2E",
+            "align": "CENTER",
+            "x": 0,
+            "y": -25,
+            "text": "{HH}:{mm}"
+        },
+        {
+            "type": "label",
+            "font": "FoxCavalier-30.font",
+            "color": "#2E2E2E",
+            "align": "CENTER",
+            "x": 0,
+            "y": 63,
+            "text": "{YYYY}-{MM}-{DD}"
+        },
+        {
+            "type": "label",
+            "font": "FoxCavalier-30.font",
+            "color": "#2E2E2E",
+            "align": "BOTTOM_RIGHT",
+            "x": -5,
+            "y": 0,
+            "text": "{battery_percent}%"
+        }
+    ]
+}

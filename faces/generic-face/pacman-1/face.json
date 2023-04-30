@@ -1,0 +1,36 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "Roboto-Bold-48.font",
+            "color": "#FFFF00",
+            "align": "CENTER",
+            "x": 0,
+            "y": -75,
+            "text": "{HH}:{mm}"
+        },
+        {
+            "type": "label",
+            "font": "Roboto-Bold-32.font",
+            "color": "#FF0000",
+            "align": "CENTER",
+            "x": 0,
+            "y": -34,
+            "text": "{YYYY}-{MM}-{DD}"
+        },
+        {
+            "type": "label",
+            "font": "Roboto-Bold-16.font",
+            "color": "#BC9807",
+            "align": "CENTER",
+            "x": 100,
+            "y": 16,
+            "text": "{battery_percent} %"
+        }  
+    ]
+}

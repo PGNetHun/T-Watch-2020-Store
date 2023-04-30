@@ -1,0 +1,19 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "Alien-30.font",
+            "color": "#FFFFFF",
+            "align": "CENTER",
+            "textalign": "CENTER",
+            "x": 0,
+            "y": 80,
+            "text": "{HH}{mm} kHz\nE.T. is calling"
+        }
+    ]
+}

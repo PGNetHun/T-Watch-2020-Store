@@ -1,0 +1,18 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.jpg"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "FaithCollapsing-46.font",
+            "color": "#909090",
+            "align": "LEFT_MID",
+            "x": 30,
+            "y": 17,
+            "text": "{HH}\n{mm}"
+        }
+    ]
+}

@@ -1,0 +1,5 @@
+{
+    "english-french.gz": { "from": "English", "to": "French" },
+    "english-spanish.gz": { "from": "English", "to": "Spanish" },
+    "german-english.gz": { "from": "German", "to": "English" }
+}

@@ -1,0 +1,18 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "nightsky-64.font",
+            "color": "#8F7CB6",
+            "align": "CENTER",
+            "x": 0,
+            "y": -50,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

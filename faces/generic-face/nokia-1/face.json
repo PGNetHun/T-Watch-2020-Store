@@ -1,0 +1,18 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#6BAB84",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "mikey_matrix-50.font",
+            "color": "#2F4034",
+            "align": "TOP_MID",
+            "x": 0,
+            "y": 30,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

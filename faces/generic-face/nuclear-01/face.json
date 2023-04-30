@@ -1,0 +1,18 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "Fake-News-70.font",
+            "color": "#E1B300",
+            "align": "TOP_MID",
+            "x": 0,
+            "y": 5,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

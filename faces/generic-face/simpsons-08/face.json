@@ -1,0 +1,18 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "Simpsonfont-56.font",
+            "color": "#E4F93C",
+            "align": "TOP_MID",
+            "x": 0,
+            "y": 83,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

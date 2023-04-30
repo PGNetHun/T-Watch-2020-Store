@@ -1,0 +1,36 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "Sublima-ExtraBold-20.font",
+            "color": "#07DB72",
+            "align": "RIGHT_MID",
+            "x": -70,
+            "y": -50,
+            "text": "{day_short}"
+        },
+        {
+            "type": "label",
+            "font": "Sublima-ExtraBold-50.font",
+            "color": "#07DB72",
+            "align": "RIGHT_MID",
+            "x": -70,
+            "y": -5,
+            "text": "{HH}"
+        },
+        {
+            "type": "label",
+            "font": "Sublima-ExtraBold-50.font",
+            "color": "#07DB72",
+            "align": "RIGHT_MID",
+            "x": -70,
+            "y": 50,
+            "text": ":{mm}"
+        }
+    ]
+}

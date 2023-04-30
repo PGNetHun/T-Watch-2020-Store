@@ -1,0 +1,99 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "LCD-60.font",
+            "color": "#D2D2D2",
+            "align": "CENTER",
+            "x": -15,
+            "y": 35,
+            "text": "88:88"
+        },
+        {
+            "type": "label",
+            "font": "LCD-60.font",
+            "color": "#2C5159",
+            "align": "CENTER",
+            "x": -15,
+            "y": 35,
+            "text": "{HH}:{mm}"
+        },
+        {
+            "type": "label",
+            "font": "LCD-32.font",
+            "color": "#D2D2D2",
+            "align": "CENTER",
+            "x": 70,
+            "y": 44,
+            "text": "88"
+        },
+        {
+            "type": "label",
+            "font": "LCD-32.font",
+            "color": "#2C5159",
+            "align": "CENTER",
+            "x": 70,
+            "y": 44,
+            "text": "{ss}"
+        },
+        {
+            "type": "label",
+            "font": "LCD-26.font",
+            "color": "#D2D2D2",
+            "align": "CENTER",
+            "x": 61,
+            "y": -27,
+            "text": "8888"
+        },
+        {
+            "type": "label",
+            "font": "LCD-26.font",
+            "color": "#2C5159",
+            "align": "CENTER",
+            "x": 61,
+            "y": -27,
+            "text": "{YYYY}"
+        },
+        {
+            "type": "label",
+            "font": "LCD-30.font",
+            "color": "#D2D2D2",
+            "align": "CENTER",
+            "x": 50,
+            "y": -4,
+            "text": "88-88"
+        },
+        {
+            "type": "label",
+            "font": "LCD-30.font",
+            "color": "#2C5159",
+            "align": "CENTER",
+            "x": 50,
+            "y": -4,
+            "text": "{MM}-{DD}"
+        },
+        {
+            "type": "label",
+            "font": "DS-DIGIB-24.font",
+            "color": "#2C5159",
+            "align": "CENTER",
+            "x": -60,
+            "y": -27,
+            "text": "{battery_percent}%"
+        },
+        {
+            "type": "label",
+            "font": "DS-DIGIB-28.font",
+            "color": "#2C5159",
+            "align": "CENTER",
+            "x": -60,
+            "y": -4,
+            "text": "{day_short}"
+        }
+    ]
+}

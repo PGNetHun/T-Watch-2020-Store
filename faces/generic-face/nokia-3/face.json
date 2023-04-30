@@ -1,0 +1,18 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "windows_command_prompt-32.font",
+            "color": "#403E40",
+            "align": "CENTER",
+            "x": 1,
+            "y": -27,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

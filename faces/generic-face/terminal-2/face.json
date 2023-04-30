@@ -1,0 +1,45 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "UbuntuMono-Regular-22.font",
+            "color": "#D3D7CF",
+            "align": "LEFT_MID",
+            "x": 10,
+            "y": -55,
+            "text": "#4D9A05 usr@watch#:#3465A4 ~#$ now"
+        },
+        {
+            "type": "label",
+            "font": "UbuntuMono-Regular-22.font",
+            "color": "#555754",
+            "align": "LEFT_MID",
+            "x": 10,
+            "y": -30,
+            "text": "[TIME] #34E3E3 {HH}:{mm}#"
+        },
+        {
+            "type": "label",
+            "font": "UbuntuMono-Regular-22.font",
+            "color": "#555754",
+            "align": "LEFT_MID",
+            "x": 10,
+            "y": -5,
+            "text": "[DATE] #C4A000 {YYYY}-{MM}-{DD}#"
+        },
+        {
+            "type": "label",
+            "font": "UbuntuMono-Regular-22.font",
+            "color": "#555754",
+            "align": "LEFT_MID",
+            "x": 10,
+            "y": 20,
+            "text": "[BATT] #AD80A6 {battery_percent}%#"
+        }
+    ]
+}

@@ -1,0 +1,27 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-20.font",
+            "color": "#FAFAFA",
+            "align": "TOP_MID",
+            "textalign": "CENTER",
+            "x": 0,
+            "y": 20,
+            "text": "\"The world will know\nthat free men stood\nagainst a tyrant,\nthat few stood\nagainst many.\""
+        },
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-60.font",
+            "color": "#FAFAFA",
+            "align": "BOTTOM_MID",
+            "x": 0,
+            "y": -10,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

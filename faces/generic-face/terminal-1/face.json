@@ -1,0 +1,17 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "ModernDOS8x16-32.font",
+            "color": "#C0C0C0",
+            "align": "LEFT_MID",
+            "x": 10,
+            "y": 0,
+            "text": "C:\\>time\n{HH}:{mm}\n\nC:\\>date\n{YYYY}-{MM}-{DD}"
+        }
+    ]
+}

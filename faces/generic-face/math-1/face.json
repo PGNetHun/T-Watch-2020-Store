@@ -1,0 +1,18 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "GloryMathilda-48.font",
+            "color": "#E6E6E6",
+            "align": "CENTER",
+            "x": 0,
+            "y": -5,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.jpg"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "CoffeeLatte-60.font",
+            "color": "#DBD9D6",
+            "align": "CENTER",
+            "x": 0,
+            "y": 3,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

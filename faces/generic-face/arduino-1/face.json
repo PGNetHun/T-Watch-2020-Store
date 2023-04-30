@@ -1,0 +1,27 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "MontserratSemibold-62.font",
+            "color": "#000000",
+            "align": "TOP_MID",
+            "x": 0,
+            "y": 108,
+            "text": "{HH}:{mm}"
+        },
+        {
+            "type": "label",
+            "font": "MontserratSemibold-20.font",
+            "color": "#FFFFFF",
+            "align": "BOTTOM_RIGHT",
+            "x": -10,
+            "y": -22,
+            "text": "{battery_percent}%"
+        }
+    ]
+}

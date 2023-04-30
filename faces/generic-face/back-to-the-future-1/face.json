@@ -1,0 +1,144 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "LCD-bttf-22.font",
+            "color": "#E7070C",
+            "align": "CENTER",
+            "x": -90,
+            "y": -49,
+            "text": "NOV"
+        },
+        {
+            "type": "label",
+            "font": "LCD-bttf-22.font",
+            "color": "#E7070C",
+            "align": "CENTER",
+            "x": -46,
+            "y": -49,
+            "text": "05"
+        },
+        {
+            "type": "label",
+            "font": "LCD-bttf-22.font",
+            "color": "#E7070C",
+            "align": "CENTER",
+            "x": 4,
+            "y": -49,
+            "text": "1955"
+        },
+        {
+            "type": "label",
+            "font": "LCD-bttf-22.font",
+            "color": "#E7070C",
+            "align": "CENTER",
+            "x": 61,
+            "y": -49,
+            "text": "06"
+        },
+        {
+            "type": "label",
+            "font": "LCD-bttf-22.font",
+            "color": "#E7070C",
+            "align": "CENTER",
+            "x": 100,
+            "y": -49,
+            "text": "28"
+        },
+        {
+            "type": "label",
+            "font": "LCD-bttf-22.font",
+            "color": "#11EC09",
+            "align": "CENTER",
+            "x": -90,
+            "y": 0,
+            "text": "{month_short}"
+        },
+        {
+            "type": "label",
+            "font": "LCD-bttf-22.font",
+            "color": "#11EC09",
+            "align": "CENTER",
+            "x": -46,
+            "y": 0,
+            "text": "{DD}"
+        },
+        {
+            "type": "label",
+            "font": "LCD-bttf-22.font",
+            "color": "#11EC09",
+            "align": "CENTER",
+            "x": 4,
+            "y": 0,
+            "text": "{YYYY}"
+        },
+        {
+            "type": "label",
+            "font": "LCD-bttf-22.font",
+            "color": "#11EC09",
+            "align": "CENTER",
+            "x": 61,
+            "y": 0,
+            "text": "{HH}"
+        },
+        {
+            "type": "label",
+            "font": "LCD-bttf-22.font",
+            "color": "#11EC09",
+            "align": "CENTER",
+            "x": 100,
+            "y": 0,
+            "text": "{mm}"
+        },
+        {
+            "type": "label",
+            "font": "LCD-bttf-22.font",
+            "color": "#F1F313",
+            "align": "CENTER",
+            "x": -90,
+            "y": 48,
+            "text": "OCT"
+        },
+        {
+            "type": "label",
+            "font": "LCD-bttf-22.font",
+            "color": "#F1F313",
+            "align": "CENTER",
+            "x": -46,
+            "y": 48,
+            "text": "26"
+        },
+        {
+            "type": "label",
+            "font": "LCD-bttf-22.font",
+            "color": "#F1F313",
+            "align": "CENTER",
+            "x": 4,
+            "y": 48,
+            "text": "1985"
+        },
+        {
+            "type": "label",
+            "font": "LCD-bttf-22.font",
+            "color": "#F1F313",
+            "align": "CENTER",
+            "x": 61,
+            "y": 48,
+            "text": "01"
+        },
+        {
+            "type": "label",
+            "font": "LCD-bttf-22.font",
+            "color": "#F1F313",
+            "align": "CENTER",
+            "x": 100,
+            "y": 48,
+            "text": "20"
+        }
+    ]
+}

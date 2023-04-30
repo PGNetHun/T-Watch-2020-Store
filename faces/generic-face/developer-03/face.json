@@ -1,0 +1,27 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-28.font",
+            "color": "#FFFFFF",
+            "align": "CENTER",
+            "textalign": "CENTER",
+            "x": 0,
+            "y": -30,
+            "text": "There is no\nplace like\n127.0.0.1"
+        },
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-40.font",
+            "color": "#FFFFFF",
+            "align": "CENTER",
+            "x": 0,
+            "y": 70,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

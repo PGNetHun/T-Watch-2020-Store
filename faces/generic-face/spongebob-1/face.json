@@ -1,0 +1,18 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "tartar_sauce_erc-28.font",
+            "color": "#936B00",
+            "align": "CENTER",
+            "x": 0,
+            "y": 70,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}
