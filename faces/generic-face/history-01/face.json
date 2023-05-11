@@ -1,0 +1,27 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-20.font",
+            "color": "#FAFAFA",
+            "align": "CENTER",
+            "textalign": "CENTER",
+            "x": 0,
+            "y": -45,
+            "text": "28 July 1914\n1 September 1939\n24 February 2022 ?"
+        },
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-60.font",
+            "color": "#FAFAFA",
+            "align": "CENTER",
+            "x": 0,
+            "y": 55,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

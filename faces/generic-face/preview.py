@@ -114,7 +114,8 @@ class Context:
         self.get_info = get_info or (lambda _: "")
 
     def set_time(self, time_tuple):
-        self.year, self.month, self.day, self.hour, self.minute, self.second, self.weekday, self.yearday = time_tuple[0:8]
+        self.year, self.month, self.day, self.hour, self.minute, self.second, self.weekday, self.yearday = time_tuple[
+            0:8]
 
 
 class Renderer:
@@ -182,10 +183,10 @@ class Renderer:
     def unload(self):
         for x in self._images:
             del x
-        
+
         for x in self._handles:
             del x
-        
+
         for x in self._gifs:
             del x
 
@@ -497,7 +498,8 @@ class App():
 
         self._face_screen.clean()
         self._show_face(face_name, time_tuple)
-        snapshot = lv.snapshot_take(self._face_screen, lv.COLOR_FORMAT.ARGB8888)
+        snapshot = lv.snapshot_take(
+            self._face_screen, lv.COLOR_FORMAT.ARGB8888)
         size = self._face_screen.get_width() * self._face_screen.get_height() * 4
         data = snapshot.data.__dereference__(size)
         with open(snapshot_file_name, "wb") as f:
@@ -581,8 +583,9 @@ class App():
 
     def _init_face_screen(self):
         self._face_screen = self._create_screen()
-        self._face_screen.add_event(self._face_screen_click_cb, lv.EVENT.CLICKED, None)
-    
+        self._face_screen.add_event(
+            self._face_screen_click_cb, lv.EVENT.CLICKED, None)
+
     def _init_renderer(self):
         self._context = Context()
         self._renderer = Renderer(self._face_screen)

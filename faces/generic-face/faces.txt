@@ -85,6 +85,7 @@ computer-08
 computer-09
 computer-10
 computer-11
+computer-12
 coyote-1
 danger-01
 danger-02
@@ -143,6 +144,7 @@ ham-1
 ham-2
 ham-3
 hands-1
+history-01
 illusion-01
 illusion-02
 illusion-03

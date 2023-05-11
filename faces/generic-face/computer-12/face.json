@@ -1,0 +1,27 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-20.font",
+            "color": "#FAFAFA",
+            "align": "TOP_MID",
+            "textalign": "CENTER",
+            "x": 0,
+            "y": 20,
+            "text": "\"There are 10 types\nof people in this world:\nthose who\nunderstand binary,\nand those\nwho don't.\""
+        },
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-44.font",
+            "color": "#FAFAFA",
+            "align": "BOTTOM_MID",
+            "x": 0,
+            "y": -10,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}
