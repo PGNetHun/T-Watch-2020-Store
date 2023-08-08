@@ -9,9 +9,10 @@
             "font": "KeepCalmMedium-20.font",
             "color": "#FAFAFA",
             "align": "TOP_MID",
+            "textalign": "CENTER",
             "x": 0,
-            "y": 15,
-            "text": "\"A nuclear war\ncannot be won\nand must\nnever be fought.\"\n1985, Geneva\nReagan & Gorbachev"
+            "y": 5,
+            "text": "\" A nuclear war\nCANNOT BE WON\nand\nMUST NEVER\nbe fought. \"\n1985, Geneva,\nReagan & Gorbachev"
         },
         {
             "type": "label",
@@ -19,7 +20,7 @@
             "color": "#FAFAFA",
             "align": "BOTTOM_MID",
             "x": 0,
-            "y": 0,
+            "y": 5,
             "text": "{HH}:{mm}"
         }
     ]

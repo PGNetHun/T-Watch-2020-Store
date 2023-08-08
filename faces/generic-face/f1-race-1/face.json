@@ -1,0 +1,26 @@
+{
+    "version": "1",
+    "smooth_handles": true,
+    "background": {
+        "color": "#000000",
+        "image": "track.png"
+    },
+    "items": [
+        {
+            "type": "handle",
+            "source": "hour",
+            "image": "f1car-red.png",
+            "align": "CENTER",
+            "pivot_x": 25,
+            "pivot_y": 50
+        },
+        {
+            "type": "handle",
+            "source": "minute",
+            "image": "f1car-blue.png",
+            "align": "CENTER",
+            "pivot_x": 25,
+            "pivot_y": 98
+        }
+    ]
+}

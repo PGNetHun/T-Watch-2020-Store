@@ -22,6 +22,15 @@
             "x": -11,
             "y": -15,
             "text": "{HH}:{mm}"
+        },
+        {
+            "type": "label",
+            "align": "TOP_RIGHT",
+            "text": "{battery_icon}",
+            "font": ".montserrat_16",
+            "color": "#FEE652",
+            "x": -5,
+            "y": 3
         }
     ]
 }

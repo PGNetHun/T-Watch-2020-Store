@@ -1,10 +1,21 @@
 {
     "version": "1",
+    "update_interval_ms": 50,
+    "smooth_handles": true,
     "background": {
         "color": "#000000",
         "image": "face.jpg"
     },
     "items": [
+        {
+            "type": "label",
+            "align": "CENTER",
+            "text": "{battery_icon}",
+            "font": ".montserrat_16",
+            "color": "#FFFFFF",
+            "x": 0,
+            "y": 86
+        },
         {
             "type": "handle",
             "source": "hour",

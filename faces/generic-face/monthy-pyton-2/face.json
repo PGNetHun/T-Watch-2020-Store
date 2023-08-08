@@ -1,0 +1,32 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#FAFAFA",
+        "image": "clock.png"
+    },
+    "items": [
+        {
+            "type": "handle",
+            "source": "hour",
+            "image": "leg2.png",
+            "align": "CENTER",
+            "pivot_x": 42,
+            "pivot_y": 64
+        },
+        {
+            "type": "handle",
+            "source": "minute",
+            "image": "leg1.png",
+            "align": "CENTER",
+            "pivot_x": 22,
+            "pivot_y": 98
+        },
+        {
+            "type": "image",
+            "file": "body.png",
+            "align": "CENTER",
+            "x": 5,
+            "y": -18
+        }
+    ]
+}

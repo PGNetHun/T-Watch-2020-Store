@@ -13,8 +13,8 @@ import lvgl as lv
 from micropython import const
 
 _USAGE = """
-Before preview set MicroPython executable as $mp environment variable:
-    mp=~/src/lv_micropython/ports/unix/micropython-dev
+First step is to set $mp environment variable to point to MicroPython executable:
+    mp=~/src/lv_micropython/ports/unix/build-standard/micropython
 
 Usage:
     $mp preview.py
@@ -51,11 +51,15 @@ _TYPE_DIRECTORY = const(0x4000)
 _MENU_ITEM_WIDTH = const(200)
 _MENU_ITEM_HEIGHT = const(50)
 
+_SHOW_CENTER_POINT = False
+_CENTER_POINT_COLOR = lv.color_hex(0x0000FF)
 
 # ************************************
 # Face implementation
 # ************************************
 _FONTS_PATH = _DRIVE_LETTER + ":fonts/"
+
+_DEFAULT_UPDATE_INTERVAL_MS = const(1000)
 
 _WEEK_DAYS = ["Monday", "Tuesday", "Wednesday",
               "Thursday", "Friday", "Saturday", "Sunday"]
@@ -65,6 +69,13 @@ _MONTHS = ["January", "February", "March", "April", "May", "June",
            "July", "August", "September", "October", "November", "December"]
 _MONTHS_SHORT = ["JAN", "FEB", "MAR", "APR", "MAY",
                  "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
+
+_INTERNAL_FONTS = {
+    ".default": lv.font_default,
+    ".montserrat_14": lv.font_montserrat_14,
+    ".montserrat_16": lv.font_montserrat_16,
+    ".dejavu_16_persian_hebrew": lv.font_dejavu_16_persian_hebrew
+}
 
 _PLACEHOLDERS = {
     "{YYYY}": lambda context: f"{context.year:04d}",
@@ -77,19 +88,27 @@ _PLACEHOLDERS = {
     "{day_short}": lambda context: _WEEK_DAYS_SHORT[context.weekday],
     "{month}": lambda context: _MONTHS[context.month - 1],
     "{month_short}": lambda context: _MONTHS_SHORT[context.month - 1],
-    "{battery_percent}": lambda context: "100"
+    "{battery_percent}": lambda context: "100",
+    "{battery_icon}": lambda context: f"{lv.SYMBOL.BATTERY_FULL}",
+    "{battery_icon_colorized}": lambda context: f"#00FF00 {lv.SYMBOL.BATTERY_FULL}#"
 }
 
-_HANDLE_SOURCE_DEFAULT_VALUES = {
+_HANDLES_DEFAULT_RANGES = {
     "hour": (0, 12, 0, 360),
     "minute": (0, 60, 0, 360),
     "second": (0, 60, 0, 360)
 }
 
-_HANDLE_SOURCE_GET_VALUES = {
+_HANDLES_GET_VALUES = {
     "hour": lambda context: (context.hour % 12) + (context.minute / 60),
     "minute": lambda context: context.minute,
     "second": lambda context: context.second,
+}
+
+_HANDLES_GET_SMOOTH_VALUES = {
+    "hour": lambda context: (context.hour % 12) + (context.minute / 60) + (context.second / 3600),
+    "minute": lambda context: context.minute + (context.second / 60),
+    "second": lambda context: context.second + (context.millisecond / 1000),
 }
 
 # Shortcuts to improve lookup performance
@@ -106,16 +125,33 @@ class Context:
     hour: int = None
     minute: int = None
     second: int = None
+    millisecond: int = None
     weekday: int = None
     yearday: int = None
     get_info: function = None
 
+    _prev_ticks_ms = 0
+
     def __init__(self, get_info: function = None):
         self.get_info = get_info or (lambda _: "")
 
-    def set_time(self, time_tuple):
+    def set_time(self, time_tuple=None):
+        if not time_tuple:
+            time_tuple = time.localtime()
+
+        prev_second = self.second
         self.year, self.month, self.day, self.hour, self.minute, self.second, self.weekday, self.yearday = time_tuple[
             0:8]
+
+        # Add "virtual" miliseconds (because 'utime.localtime()' does not return it):
+        current_ticks_ms = time.ticks_ms()
+        if self._prev_ticks_ms > 0:
+            self.millisecond += time.ticks_diff(
+                current_ticks_ms, self._prev_ticks_ms)
+        self._prev_ticks_ms = current_ticks_ms
+
+        if prev_second != self.second:
+            self.millisecond = 0
 
 
 class Renderer:
@@ -123,6 +159,8 @@ class Renderer:
         self._screen = screen
 
         self._container: lv.obj = None
+        self._update_interval_ms = _DEFAULT_UPDATE_INTERVAL_MS
+        self._use_smooth_handles: bool = False
         self._fonts = {}
         self._labels = []
         self._handles = []
@@ -146,6 +184,10 @@ class Renderer:
 
         if config["version"] != "1":
             raise Exception("Not supported version: " + config["version"])
+
+        self._update_interval_ms = int(config.get(
+            "update_interval_ms", _DEFAULT_UPDATE_INTERVAL_MS))
+        self._use_smooth_handles = config.get("smooth_handles", False)
 
         # Set background color and image
         item = config.get("background", None)
@@ -204,6 +246,9 @@ class Renderer:
         self._labels.clear()
         self._fonts.clear()
 
+    def get_update_interval_ms(self):
+        return self._update_interval_ms
+
     def show(self, context: Context):
         # Update labels
         for label in self._labels:
@@ -218,14 +263,16 @@ class Renderer:
                 label["lv_label"].set_text(text)
 
         # Rotate handles
-        for handle in self._handles:
-            value = _HANDLE_SOURCE_GET_VALUES.get(
-                handle["source"], lambda _: 0)(context)
-            (min_value, max_value, min_angle, max_angle) = handle["ranges"]
+        if self._handles:
+            source_values = _HANDLES_GET_SMOOTH_VALUES if self._use_smooth_handles else _HANDLES_GET_VALUES
+            for handle in self._handles:
+                value = source_values.get(
+                    handle["source"], lambda _: 0)(context)
+                (min_value, max_value, min_angle, max_angle) = handle["ranges"]
 
-            angle = int(
-                (min_angle + ((min_value + value) / max_value) * max_angle) * 10)
-            handle["image"].set_angle(angle)
+                angle = int(
+                    (min_angle + ((min_value + value) / max_value) * max_angle) * 10)
+                handle["image"].set_angle(angle)
 
     def _load_label(self, parent: lv.obj, item: dict, path: str):
         text = item.get("text", "")
@@ -248,12 +295,17 @@ class Renderer:
 
         font_name = item.get("font", None)
         if font_name:
-            font_path = _FONTS_PATH + font_name
-            font = self._fonts.get(font_name, None)
+            font = _INTERNAL_FONTS.get(font_name, None)
+
             if not font:
-                font = lv.font_load(font_path)
-                self._fonts[font_name] = font
-            label.set_style_text_font(font, 0)
+                font_path = _FONTS_PATH + font_name
+                font = self._fonts.get(font_name, None)
+                if not font:
+                    font = lv.font_load(font_path)
+                    self._fonts[font_name] = font
+
+            if font:
+                label.set_style_text_font(font, 0)
 
         self._labels.append({
             "lv_label": label,
@@ -296,12 +348,11 @@ class Renderer:
             item.get("align", None), __LV_ALIGN.TOP_LEFT)
 
         source = item.get("source", None)
-        source_default_values = _HANDLE_SOURCE_DEFAULT_VALUES.get(
-            source, (0, 100, 0, 360))
-        ranges = (item.get("min_value", source_default_values[0]),
-                  item.get("max_value", source_default_values[1]),
-                  item.get("min_angle", source_default_values[2]),
-                  item.get("max_angle", source_default_values[3]))
+        default_ranges = _HANDLES_DEFAULT_RANGES.get(source, (0, 100, 0, 360))
+        ranges = (item.get("min_value", default_ranges[0]),
+                  item.get("max_value", default_ranges[1]),
+                  item.get("min_angle", default_ranges[2]),
+                  item.get("max_angle", default_ranges[3]))
 
         img = self._show_image(parent, f"{path}/{filename}", align, x, y)
 
@@ -386,8 +437,8 @@ class LVGL_FS_Driver():
         try:
             f = open(f"{self._base_path}/{path}", p_mode)
         except Exception as e:
-            raise RuntimeError(
-                f"open_cb('{path}', '{p_mode}') error: ", errno.errorcode[e.args[0]])
+            msg = f"open_cb('{path}', '{p_mode}') error: {errno.errorcode[e.args[0]]}"
+            raise RuntimeError(msg)
 
         return LVGL_FS_File(f, path)
 
@@ -395,8 +446,7 @@ class LVGL_FS_Driver():
         try:
             fs_file.__cast__().file.close()
         except Exception as e:
-            print(
-                f"close_cb('{fs_file.__cast__().path}') error: {errno.errorcode[e.args[0]]}", e)
+            self._print_error("close_cb", fs_file, e)
             return _RET_FS_ERR
 
         return _RET_OK
@@ -407,8 +457,7 @@ class LVGL_FS_Driver():
             bytes_read = fs_file.__cast__().file.readinto(tmp_data)
             br.__dereference__(4)[0:4] = struct.pack("<L", bytes_read)
         except Exception as e:
-            print(
-                f"read_cb('{fs_file.__cast__().path}', {btr}) error: {errno.errorcode[e.args[0]]}", e)
+            self._print_error("read_cb", fs_file, e)
             return _RET_FS_ERR
 
         return _RET_OK
@@ -417,8 +466,7 @@ class LVGL_FS_Driver():
         try:
             fs_file.__cast__().file.seek(pos, whence)
         except Exception as e:
-            print(
-                f"seek_cb('{fs_file.__cast__().path}', {pos}, {whence}) error: {errno.errorcode[e.args[0]]}", e)
+            self._print_error("seek_cb", fs_file, e)
             return _RET_FS_ERR
 
         return _RET_OK
@@ -428,8 +476,7 @@ class LVGL_FS_Driver():
             tpos = fs_file.__cast__().file.tell()
             pos.__dereference__(4)[0:4] = struct.pack("<L", tpos)
         except Exception as e:
-            print(
-                f"tell_cb('{fs_file.__cast__().path}') error: {errno.errorcode[e.args[0]]}", e)
+            self._print_error("tell_cb", fs_file, e)
             return _RET_FS_ERR
 
         return _RET_OK
@@ -439,11 +486,14 @@ class LVGL_FS_Driver():
             wr = fs_file.__cast__().file.write(buf[0:btw])
             bw.__dereference__(4)[0:4] = struct.pack("<L", wr)
         except Exception as e:
-            print(
-                f"write_cb('{fs_file.__cast__().path}', {btw}) error: {errno.errorcode[e.args[0]]}", e)
+            self._print_error("write_cb", fs_file, e)
             return _RET_FS_ERR
 
         return _RET_OK
+
+    def _print_error(self, function_name, fs_file, exception):
+        print(
+            f"{function_name}('{fs_file.__cast__().path}') error: {errno.errorcode[exception.args[0]]}", exception)
 
 # ************************************
 # Main app
@@ -457,10 +507,13 @@ class App():
         self._faces = []
         self._face_screen: lv.obj = None
         self._menu_screen: lv.obj = None
+        self._center_point: lv.obj = None
         self._context: Context = None
         self._renderer: Renderer = None
         self._face_selector_dropdown: lv.dropdown = None
         self._is_running = False
+        self._update_interval_ms = _DEFAULT_UPDATE_INTERVAL_MS
+        self._show_center_point = _SHOW_CENTER_POINT
 
         self._load_faces_list()
         self._init_lvgl()
@@ -468,6 +521,8 @@ class App():
         self._init_lvgl_image_decoders()
         self._init_menu_screen()
         self._init_face_screen()
+        if self._show_center_point:
+            self._init_center_point()
         self._init_renderer()
 
     async def loop(self, face_name=None):
@@ -480,11 +535,16 @@ class App():
 
         self._is_running = True
         while self._is_running:
-            self._context.set_time(time.localtime())
+            self._context.set_time()
             self._renderer.show(self._context)
-            await uasyncio.sleep_ms(250)
+
+            if self._show_center_point and self._center_point:
+                self._center_point.move_foreground()
+
+            await uasyncio.sleep_ms(self._update_interval_ms)
 
     def snapshot_all(self, snapshot_name_postfix, snapshots_path, time_tuple):
+        self._show_center_point = False
         for face_name in self._faces:
             snapshot_file_name = f"{snapshots_path}/{face_name}{snapshot_name_postfix}"
             self.snapshot(face_name, snapshot_file_name, time_tuple)
@@ -496,6 +556,7 @@ class App():
             print(f"Face does not exist: {face_name}")
             return
 
+        self._show_center_point = False
         self._face_screen.clean()
         self._show_face(face_name, time_tuple)
         snapshot = lv.snapshot_take(
@@ -586,6 +647,15 @@ class App():
         self._face_screen.add_event(
             self._face_screen_click_cb, lv.EVENT.CLICKED, None)
 
+    def _init_center_point(self):
+        c = lv.obj(self._face_screen)
+        c.remove_style_all()
+        c.center()
+        c.set_size(4, 4)
+        c.set_style_bg_color(_CENTER_POINT_COLOR, 0)
+        c.set_style_bg_opa(lv.OPA.COVER, 0)
+        self._center_point = c
+
     def _init_renderer(self):
         self._context = Context()
         self._renderer = Renderer(self._face_screen)
@@ -622,9 +692,12 @@ class App():
         with open(f"{face_path}/{_FACE_FILE}", "r") as f:
             config = json.load(f)
 
-        print("Show face: ", face_path)
-        self._context.set_time(time_tuple or time.localtime())
+        lv.img.cache_invalidate_src(None)
+        gc.collect()
+        print(f"Show face: {name}")
+        self._context.set_time(time_tuple)
         self._renderer.load(face_path, config)
+        self._update_interval_ms = self._renderer.get_update_interval_ms()
         self._renderer.show(self._context)
 
     def _face_screen_click_cb(self, event):

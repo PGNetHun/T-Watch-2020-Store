@@ -2,24 +2,24 @@
     "version": "1",
     "background": {
         "color": "#000000",
-        "image": "track.png"
+        "image": "background.png"
     },
     "items": [
         {
             "type": "handle",
             "source": "hour",
-            "image": "f1car-red.png",
+            "image": "antenna1.png",
             "align": "CENTER",
-            "pivot_x": 25,
-            "pivot_y": 50
+            "pivot_x": 19,
+            "pivot_y": 55
         },
         {
             "type": "handle",
             "source": "minute",
-            "image": "f1car-blue.png",
+            "image": "antenna2.png",
             "align": "CENTER",
-            "pivot_x": 25,
-            "pivot_y": 98
+            "pivot_x": 8,
+            "pivot_y": 94
         }
     ]
 }

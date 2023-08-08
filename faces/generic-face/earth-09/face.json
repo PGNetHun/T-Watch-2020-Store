@@ -1,5 +1,6 @@
 {
     "version": "1",
+    "smooth_handles": true,
     "background": {
         "color": "#000000"
     },

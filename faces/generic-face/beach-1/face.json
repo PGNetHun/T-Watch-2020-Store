@@ -1,5 +1,7 @@
 {
     "version": "1",
+    "update_interval_ms": 50,
+    "smooth_handles": true,
     "background": {
         "color": "#000000",
         "image": "background.jpg"

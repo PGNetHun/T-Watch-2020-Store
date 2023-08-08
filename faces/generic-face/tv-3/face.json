@@ -12,8 +12,8 @@
             "align": "CENTER",
             "textalign": "CENTER",
             "x": 0,
-            "y": -40,
-            "text": "Propaganda,\n\nLies, hatred"
+            "y": -35,
+            "text": "Propaganda,\nHatred,\nLies"
         },
         {
             "type": "label",

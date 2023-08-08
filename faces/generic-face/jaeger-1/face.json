@@ -6,6 +6,15 @@
     },
     "items": [
         {
+            "type": "label",
+            "font": "KeepCalmMedium-18.font",
+            "align": "CENTER",
+            "text": "{battery_percent} %",
+            "color": "#FFFFFF",
+            "x": 0,
+            "y": 55
+        },
+        {
             "type": "handle",
             "source": "hour",
             "image": "hour.png",

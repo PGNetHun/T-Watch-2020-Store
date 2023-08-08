@@ -12,8 +12,8 @@
             "align": "CENTER",
             "textalign": "CENTER",
             "x": 0,
-            "y": -40,
-            "text": "Brainwashing"
+            "y": -35,
+            "text": "TV:\nBrainwashing\nDevice"
         },
         {
             "type": "label",
@@ -21,7 +21,7 @@
             "color": "#FF0000",
             "align": "CENTER",
             "x": 0,
-            "y": 10,
+            "y": 25,
             "text": "{HH}:{mm}"
         }
     ]

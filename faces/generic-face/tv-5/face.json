@@ -2,16 +2,26 @@
     "version": "1",
     "background": {
         "color": "#000000",
-        "image": "background.jpg"
+        "image": "background.png"
     },
     "items": [
         {
             "type": "label",
+            "font": "FutureSocialism-22.font",
+            "color": "#FF0000",
+            "align": "CENTER",
+            "textalign": "CENTER",
+            "x": 0,
+            "y": -40,
+            "text": "Z o m b i e\n\nFactory"
+        },
+        {
+            "type": "label",
             "font": "FutureSocialism-40.font",
-            "color": "#030104",
-            "align": "TOP_LEFT",
-            "x": 10,
-            "y": 40,
+            "color": "#FF0000",
+            "align": "CENTER",
+            "x": 0,
+            "y": 25,
             "text": "{HH}:{mm}"
         }
     ]

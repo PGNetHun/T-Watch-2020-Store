@@ -11,7 +11,7 @@ Usage:
     python3 generate.py [micropython executable]
 
     [micropython executable]    Path of Unix port MicroPython executable.
-                                For example: "~/src/lv_micropython/ports/unix/micropython"
+                                For example: "~/src/lv_micropython/ports/unix/build-standard/micropython"
 """
 
 _LIST_FILE = "faces.txt"

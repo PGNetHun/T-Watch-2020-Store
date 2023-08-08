@@ -120,8 +120,11 @@ electronics-10
 electronics-11
 electronics-12
 electronics-13
+electronics-14
+electronics-15
 energy-1
 envelope-1
+f1-race-1
 face-01
 face-02
 face-03
@@ -191,6 +194,7 @@ minions-4
 minions-5
 minions-6
 monthy-pyton-1
+monthy-pyton-2
 moon-01
 mortal-kombat-1
 nokia-1
@@ -226,6 +230,7 @@ quote-09
 quote-10
 quote-11
 quote-12
+quote-13
 rain-1
 rain-2
 raspberry-01
@@ -249,7 +254,6 @@ simpsons-08
 simpsons-09
 skull-1
 sliders
-snail-race
 snoopy-01
 snoopy-02
 snoopy-03
@@ -290,6 +294,7 @@ tv-2
 tv-3
 tv-4
 tv-5
+tv-6
 twitter-1
 ufo-1
 warning-01
