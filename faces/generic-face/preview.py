@@ -476,6 +476,7 @@ class App():
     def __init__(self):
         self._faces_path = os.getcwd()
         self._root_path = self._faces_path.rsplit("/", 2)[0]
+        self._faces_full_list = []
         self._faces = []
         self._face_screen: lv.obj = None
         self._menu_screen: lv.obj = None
@@ -483,6 +484,7 @@ class App():
         self._context: Context = None
         self._renderer: Renderer = None
         self._face_selector_dropdown: lv.dropdown = None
+        self._face_selector_filter: str = ""
         self._is_running = False
         self._update_interval_ms = _DEFAULT_UPDATE_INTERVAL_MS
         self._show_center_point = _SHOW_CENTER_POINT
@@ -499,7 +501,7 @@ class App():
     async def loop(self, face_name=None):
         if face_name and face_name in self._faces and self._path_exists(f"{self._faces_path}/{face_name}"):
             self._face_selector_dropdown.set_selected(
-                self._faces.index(face_name))
+                self._faces_filtered.index(face_name))
             self._show_face(face_name)
         else:
             self._show_menu()
@@ -587,14 +589,14 @@ class App():
         screen.set_size(lv.pct(100), lv.pct(100))
         screen.set_style_pad_ver(10, 0)
         screen.set_flex_flow(lv.FLEX_FLOW.COLUMN)
-        screen.set_flex_align(lv.FLEX_ALIGN.START,
-                              lv.FLEX_ALIGN.CENTER, lv.FLEX_ALIGN.CENTER)
+        screen.set_flex_align(lv.FLEX_ALIGN.START, lv.FLEX_ALIGN.CENTER, lv.FLEX_ALIGN.CENTER)
         screen.set_style_pad_row(10, lv.STATE.DEFAULT)
 
         # Faces dropdown
         dd = lv.dropdown(screen)
         dd.set_width(_MENU_ITEM_WIDTH)
         dd.set_options("\n".join(self._faces))
+        dd.add_event_cb(self._face_selector_key_event_cb, lv.EVENT.KEY, None)
         self._face_selector_dropdown = dd
 
         # Show button
@@ -645,20 +647,42 @@ class App():
         faces = [entry[0] for entry in os.ilistdir(
             self._faces_path) if entry[1] == _TYPE_DIRECTORY and not entry[0].startswith("_")]
         faces.sort()
-        self._faces = faces
+        self._faces_full_list = faces
+        self._faces = faces.copy()
+
+    def _face_selector_key_event_cb(self, event):
+        filter = self._face_selector_filter
+
+        key = event.get_key()
+        char = chr(key)
+        if key == lv.KEY.ESC:
+            filter = ""
+        elif key == lv.KEY.BACKSPACE:
+            filter = filter[:-1]
+        elif char.isalpha:
+            filter += char
+
+        if filter != self._face_selector_filter:
+            self._face_selector_filter = filter
+
+            current_face_name = self._faces[self._face_selector_dropdown.get_selected()] if self._faces else ""
+            self._faces = [face for face in self._faces_full_list if face.startswith(filter)]
+            self._reload_face_selector_dropdown(current_face_name)
 
     def _show_button_cb(self, event):
-        face_name = self._faces[self._face_selector_dropdown.get_selected()]
-        self._show_face(face_name)
+        if self._faces:
+            face_name = self._faces[self._face_selector_dropdown.get_selected()]
+            self._show_face(face_name)
 
     def _reload_button_cb(self, event):
-        current_face_name = self._faces[self._face_selector_dropdown.get_selected(
-        )]
+        current_face_name = self._faces[self._face_selector_dropdown.get_selected()] if self._faces else ""
         self._load_faces_list()
+        self._reload_face_selector_dropdown(current_face_name)
+
+    def _reload_face_selector_dropdown(self, selected_face_name):
         self._face_selector_dropdown.set_options("\n".join(self._faces))
-        if current_face_name in self._faces:
-            self._face_selector_dropdown.set_selected(
-                self._faces.index(current_face_name))
+        if selected_face_name in self._faces:
+            self._face_selector_dropdown.set_selected(self._faces.index(selected_face_name))
 
     def _exit_button_cb(self, event):
         self._is_running = False
