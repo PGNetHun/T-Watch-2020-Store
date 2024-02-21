@@ -531,14 +531,13 @@ class App():
         self._show_center_point = False
         self._face_screen.clean()
         self._show_face(face_name, time_tuple)
-        snapshot = lv.snapshot_take(
-            self._face_screen, lv.COLOR_FORMAT.ARGB8888)
+        snapshot = lv.snapshot_take(self._face_screen, lv.COLOR_FORMAT.ARGB8888)
         size = self._face_screen.get_width() * self._face_screen.get_height() * 4
         data = snapshot.data.__dereference__(size)
         with open(snapshot_file_name, "wb") as f:
             f.write(data)
 
-        lv.snapshot_free(snapshot)
+        snapshot.destroy()
         self._renderer.unload()
         print(f"Snapshot file: {snapshot_file_name} ({size} bytes)")
 
