@@ -1,13 +1,14 @@
 # Preview of generic digital faces
 
-import time
-import os
 import gc
+import os
+import sys
+import time
 import json
 import errno
 import struct
-import sys
 import uasyncio
+
 import lvgl as lv
 
 from micropython import const
@@ -44,7 +45,6 @@ _HEIGHT = const(240)
 _MARGIN_PERCENT = const(20)
 _DRIVE_LETTER = const('S')
 _FS_CACHE_SIZE = const(2048)
-_IMG_CACHE_COUNT = const(32)
 
 _TYPE_DIRECTORY = const(0x4000)
 
@@ -73,8 +73,7 @@ _MONTHS_SHORT = ["JAN", "FEB", "MAR", "APR", "MAY",
 _INTERNAL_FONTS = {
     ".default": lv.font_default,
     ".montserrat_14": lv.font_montserrat_14,
-    ".montserrat_16": lv.font_montserrat_16,
-    ".dejavu_16_persian_hebrew": lv.font_dejavu_16_persian_hebrew
+    ".montserrat_16": lv.font_montserrat_16
 }
 
 _PLACEHOLDERS = {
@@ -166,7 +165,6 @@ class Renderer:
         self._handles = []
         self._images = []
         self._gifs = []
-        self._gif_data = []
 
         self._item_load_function = {
             "label": self._load_label,
@@ -175,7 +173,7 @@ class Renderer:
             "handle": self._load_handle
         }
 
-    def load(self, path, config):
+    def load(self, face_relative_path, config):
         container = lv.obj(self._screen)
         container.remove_style_all()
         container.set_size(lv.pct(100), lv.pct(100))
@@ -198,10 +196,9 @@ class Renderer:
                 container.set_style_bg_opa(lv.OPA.COVER, 0)
 
             if "image" in item:
-                image_path = f"{path}/{item.get('image')}"
+                image_path = f"{_DRIVE_LETTER}:{face_relative_path}/{item.get('image')}"
                 try:
-                    image = self._show_image(
-                        container, image_path, __ALIGN_CENTER, 0, 0)
+                    image = self._show_image(container, image_path, __ALIGN_CENTER, 0, 0)
                     self._images.append(image)
                     container = image
                 except:
@@ -220,7 +217,7 @@ class Renderer:
 
             load_function = self._item_load_function.get(item_type, None)
             if load_function:
-                load_function(container, item, path)
+                load_function(container, item, face_relative_path)
 
     def unload(self):
         for x in self._images:
@@ -232,17 +229,13 @@ class Renderer:
         for x in self._gifs:
             del x
 
-        for x in self._gif_data:
-            del x
-
         for x in self._fonts.values():
-            x.free()
+            lv.binfont_destroy(x)
             del x
 
         self._images.clear()
         self._handles.clear()
         self._gifs.clear()
-        self._gif_data.clear()
         self._labels.clear()
         self._fonts.clear()
 
@@ -266,13 +259,11 @@ class Renderer:
         if self._handles:
             source_values = _HANDLES_GET_SMOOTH_VALUES if self._use_smooth_handles else _HANDLES_GET_VALUES
             for handle in self._handles:
-                value = source_values.get(
-                    handle["source"], lambda _: 0)(context)
+                value = source_values.get(handle["source"], lambda _: 0)(context)
                 (min_value, max_value, min_angle, max_angle) = handle["ranges"]
 
-                angle = int(
-                    (min_angle + ((min_value + value) / max_value) * max_angle) * 10)
-                handle["image"].set_angle(angle)
+                angle = int((min_angle + ((min_value + value) / max_value) * max_angle) * 10)
+                handle["image"].set_rotation(angle)
 
     def _load_label(self, parent: lv.obj, item: dict, path: str):
         text = item.get("text", "")
@@ -281,15 +272,13 @@ class Renderer:
         x = item.get("x", 0)
         y = item.get("y", 0)
 
-        align = __LV_ALIGN.__dict__.get(
-            item.get("align", None), __LV_ALIGN.TOP_LEFT)
-        textalign = __LV_TEXT_ALIGN.__dict__.get(
-            item.get("textalign", None), __LV_TEXT_ALIGN.LEFT)
+        align = __LV_ALIGN.__dict__.get(item.get("align", None), __LV_ALIGN.TOP_LEFT)
+        textalign = __LV_TEXT_ALIGN.__dict__.get(item.get("textalign", None), __LV_TEXT_ALIGN.LEFT)
 
+        # TODO: handle recolor
         label = __LV_LABEL(parent)
         label.set_style_text_color(color, 0)
         label.set_style_text_align(textalign, 0)
-        label.set_recolor(True)
         label.align(align, x, y)
         label.set_text("")
 
@@ -301,7 +290,7 @@ class Renderer:
                 font_path = _FONTS_PATH + font_name
                 font = self._fonts.get(font_name, None)
                 if not font:
-                    font = lv.font_load(font_path)
+                    font = lv.binfont_create(font_path)
                     self._fonts[font_name] = font
 
             if font:
@@ -317,25 +306,20 @@ class Renderer:
         filename = item.get("file")
         x = item.get("x", 0)
         y = item.get("y", 0)
-        align = __LV_ALIGN.__dict__.get(
-            item.get("align", None), __LV_ALIGN.TOP_LEFT)
+        align = __LV_ALIGN.__dict__.get(item.get("align", None), __LV_ALIGN.TOP_LEFT)
 
-        img = self._show_image(parent, f"{path}/{filename}", align, x, y)
+        img = self._show_image(parent, f"{_DRIVE_LETTER}:{path}/{filename}", align, x, y)
         self._images.append(img)
 
     def _load_gif(self, parent: lv.obj, item: dict, path: str):
         filename = item.get("file")
         x = item.get("x", 0)
         y = item.get("y", 0)
-        align = __LV_ALIGN.__dict__.get(
-            item.get("align", None), __LV_ALIGN.TOP_LEFT)
-
-        img_dsc = self._get_lv_img_dsc(f"{path}/{filename}")
-        self._gif_data.append(img_dsc)
+        align = __LV_ALIGN.__dict__.get(item.get("align", None), __LV_ALIGN.TOP_LEFT)
 
         gif = lv.gif(parent)
         gif.align(align, x, y)
-        gif.set_src(img_dsc)
+        gif.set_src(f"{_DRIVE_LETTER}:{path}/{filename}")
         self._gifs.append(gif)
 
     def _load_handle(self, parent: lv.obj, item: dict, path: str):
@@ -344,8 +328,7 @@ class Renderer:
         y = item.get("y", 0)
         pivot_x = item.get("pivot_x", 0)
         pivot_y = item.get("pivot_y", 0)
-        align = __LV_ALIGN.__dict__.get(
-            item.get("align", None), __LV_ALIGN.TOP_LEFT)
+        align = __LV_ALIGN.__dict__.get(item.get("align", None), __LV_ALIGN.TOP_LEFT)
 
         source = item.get("source", None)
         default_ranges = _HANDLES_DEFAULT_RANGES.get(source, (0, 100, 0, 360))
@@ -354,15 +337,14 @@ class Renderer:
                   item.get("min_angle", default_ranges[2]),
                   item.get("max_angle", default_ranges[3]))
 
-        img = self._show_image(parent, f"{path}/{filename}", align, x, y)
+        img = self._show_image(parent, f"{_DRIVE_LETTER}:{path}/{filename}", align, x, y)
 
         # Fix image alignment with pivot point
         if align != __LV_ALIGN.TOP_LEFT:
             img.refr_size()
             img.refr_pos()
             x, y, w, h = img.get_x(), img.get_y(), img.get_width(), img.get_height()
-            img.align(__LV_ALIGN.TOP_LEFT, x - w // 2 +
-                      (w - pivot_x), y - h // 2 + (h - pivot_y))
+            img.align(__LV_ALIGN.TOP_LEFT, x - w // 2 + (w - pivot_x), y - h // 2 + (h - pivot_y))
 
         img.set_pivot(pivot_x, pivot_y)
 
@@ -377,22 +359,12 @@ class Renderer:
         return lv.color_hex(color_int)
 
     def _show_image(self, parent, path, align=lv.ALIGN.CENTER, x=0, y=0):
-        image_desc = self._get_lv_img_dsc(path)
-        image = lv.img(parent)
+        image = lv.image(parent)
         image.align(align, x, y)
-        image.set_src(image_desc)
+        image.set_src(path)
         image.refr_pos()
         image.refr_size()
         return image
-
-    def _get_lv_img_dsc(self, filepath):
-        with open(filepath, "rb") as f:
-            image_data = f.read()
-
-        return lv.img_dsc_t({
-            "data": image_data,
-            "data_size": len(image_data)
-        })
 
 
 # ************************************
@@ -518,7 +490,6 @@ class App():
         self._load_faces_list()
         self._init_lvgl()
         self._init_lvgl_fs()
-        self._init_lvgl_image_decoders()
         self._init_menu_screen()
         self._init_face_screen()
         if self._show_center_point:
@@ -548,8 +519,7 @@ class App():
         for face_name in self._faces:
             snapshot_file_name = f"{snapshots_path}/{face_name}{snapshot_name_postfix}"
             self.snapshot(face_name, snapshot_file_name, time_tuple)
-            lv.img.cache_invalidate_src(None)
-            gc.collect()
+            self._clean_mem()
 
     def snapshot(self, face_name, snapshot_file_name, time_tuple):
         if not face_name or not self._path_exists(f"{self._faces_path}/{face_name}"):
@@ -570,27 +540,38 @@ class App():
         self._renderer.unload()
         print(f"Snapshot file: {snapshot_file_name} ({size} bytes)")
 
+    def _clean_mem(self):
+        lv.image.cache_drop(None)
+        gc.collect()
+
     def _init_lvgl(self):
         lv.init()
+
+        if hasattr(lv, "log_register_print_cb"):
+            lv.log_register_print_cb(print)
+
+        group = lv.group_create()
+        group.set_default()
 
         # Init display
         display = lv.sdl_window_create(_WIDTH, _HEIGHT)
 
         # Init mouse
         mouse = lv.sdl_mouse_create()
-        mouse.set_disp(display)
+        mouse.set_display(display)
+        mouse.set_group(group)
+
+        # Init keyboard
+        keyboard = lv.sdl_keyboard_create()
+        keyboard.set_display(display)
+        keyboard.set_group(group)
 
         import lv_utils
         lv_utils.event_loop(asynchronous=True)
 
     def _init_lvgl_fs(self):
         lv_fs_drv = lv.fs_drv_t()
-        LVGL_FS_Driver(self._root_path, lv_fs_drv,
-                       _DRIVE_LETTER, _FS_CACHE_SIZE)
-
-    def _init_lvgl_image_decoders(self):
-        lv.img.cache_set_size(_IMG_CACHE_COUNT)
-        lv.split_jpeg_init()
+        LVGL_FS_Driver(self._root_path, lv_fs_drv, _DRIVE_LETTER, _FS_CACHE_SIZE)
 
     def _create_screen(self):
         screen = lv.obj()
@@ -617,34 +598,34 @@ class App():
         self._face_selector_dropdown = dd
 
         # Show button
-        button = lv.btn(screen)
+        button = lv.button(screen)
         button.set_size(_MENU_ITEM_WIDTH, _MENU_ITEM_HEIGHT)
-        button.add_event(self._show_button_cb, lv.EVENT.CLICKED, None)
+        button.add_event_cb(self._show_button_cb, lv.EVENT.CLICKED, None)
         label = lv.label(button)
         label.set_text("Show")
         label.center()
 
         # Reload list button
-        button = lv.btn(screen)
+        button = lv.button(screen)
         button.set_size(_MENU_ITEM_WIDTH, _MENU_ITEM_HEIGHT)
         button.set_style_bg_color(lv.color_hex(0x00CC00), 0)
-        button.add_event(self._reload_button_cb, lv.EVENT.CLICKED, None)
+        button.add_event_cb(self._reload_button_cb, lv.EVENT.CLICKED, None)
         label = lv.label(button)
         label.set_text("Reload list")
         label.center()
 
         # Exit button
-        button = lv.btn(screen)
+        button = lv.button(screen)
         button.set_size(_MENU_ITEM_WIDTH, _MENU_ITEM_HEIGHT)
         button.set_style_bg_color(lv.color_hex(0xFF0000), 0)
-        button.add_event(self._exit_button_cb, lv.EVENT.CLICKED, None)
+        button.add_event_cb(self._exit_button_cb, lv.EVENT.CLICKED, None)
         label = lv.label(button)
         label.set_text("Exit")
         label.center()
 
     def _init_face_screen(self):
         self._face_screen = self._create_screen()
-        self._face_screen.add_event(
+        self._face_screen.add_event_cb(
             self._face_screen_click_cb, lv.EVENT.CLICKED, None)
 
     def _init_center_point(self):
@@ -683,28 +664,24 @@ class App():
         self._is_running = False
 
     def _show_menu(self):
-        lv.scr_load(self._menu_screen)
+        lv.screen_load(self._menu_screen)
 
     def _show_face(self, name, time_tuple=None):
-        lv.scr_load(self._face_screen)
+        lv.screen_load(self._face_screen)
 
-        face_path = f"{self._faces_path}/{name}"
-        with open(f"{face_path}/{_FACE_FILE}", "r") as f:
+        with open(f"{self._faces_path}/{name}/{_FACE_FILE}", "r") as f:
             config = json.load(f)
 
-        lv.img.cache_invalidate_src(None)
-        gc.collect()
-        print(f"Show face: {name}")
+        self._clean_mem()
         self._context.set_time(time_tuple)
-        self._renderer.load(face_path, config)
+        self._renderer.load(f"faces/generic-face/{name}", config)
         self._update_interval_ms = self._renderer.get_update_interval_ms()
         self._renderer.show(self._context)
 
     def _face_screen_click_cb(self, event):
         if self._renderer:
             self._renderer.unload()
-            lv.img.cache_invalidate_src(None)
-            gc.collect()
+            self._clean_mem()
 
         # If left or right side is touched, then show previous/next face
         show_other_face = False
