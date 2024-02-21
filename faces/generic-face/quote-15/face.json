@@ -1,0 +1,27 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-16.font",
+            "color": "#FAFAFA",
+            "align": "TOP_MID",
+            "textalign": "CENTER",
+            "x": 0,
+            "y": 10,
+            "text": "Men who saved the World\nfrom NUCLEAR WAR:\n> Vasili Arkhipov, 1962 <\n> Stanislav Petrov, 1983 <\nThey chose LIFE,\nnot WAR.\nWho will be the next\nHERO?"
+        },
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-60.font",
+            "color": "#FAFAFA",
+            "align": "BOTTOM_MID",
+            "x": 0,
+            "y": 5,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

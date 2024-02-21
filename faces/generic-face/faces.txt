@@ -71,6 +71,11 @@ city-02
 city-03
 city-04
 clock-01
+clock-02
+clock-03
+clock-04
+clock-05
+clock-06
 coffee-1
 coffee-2
 coffee-3
@@ -106,6 +111,7 @@ earth-06
 earth-07
 earth-08
 earth-09
+earth-10
 einstein-1
 electronics-01
 electronics-02
@@ -231,6 +237,13 @@ quote-10
 quote-11
 quote-12
 quote-13
+quote-14
+quote-15
+quote-16
+quote-17
+quote-18
+quote-19
+quote-20
 rain-1
 rain-2
 raspberry-01
@@ -268,10 +281,6 @@ spaghetti
 spectrum-1
 spongebob-1
 spongebob-2
-standard-01
-standard-02
-standard-03
-standard-04
 stargate-1
 starwars-01
 starwars-02

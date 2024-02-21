@@ -1,0 +1,32 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000"
+    },
+    "items": [
+        {
+            "type": "handle",
+            "source": "hour",
+            "image": "hour.png",
+            "align": "CENTER",
+            "pivot_x": 13,
+            "pivot_y": 70
+        },
+        {
+            "type": "handle",
+            "source": "minute",
+            "image": "minute.png",
+            "align": "CENTER",
+            "pivot_x": 5,
+            "pivot_y": 82
+        },
+        {
+            "type": "handle",
+            "source": "second",
+            "image": "second.png",
+            "align": "CENTER",
+            "pivot_x": 7,
+            "pivot_y": 110
+        }
+    ]
+}

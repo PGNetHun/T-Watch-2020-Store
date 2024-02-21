@@ -1,0 +1,27 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-18.font",
+            "color": "#FAFAFA",
+            "align": "TOP_MID",
+            "textalign": "CENTER",
+            "x": 0,
+            "y": 25,
+            "text": "Older men declare war.\nBut it is youth that must\nfight and die.\n\nHerbert Hoover"
+        },
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-60.font",
+            "color": "#FAFAFA",
+            "align": "BOTTOM_MID",
+            "x": 0,
+            "y": -10,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

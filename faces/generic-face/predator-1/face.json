@@ -12,7 +12,7 @@
             "align": "CENTER",
             "x": 0,
             "y": -70,
-            "text": "{HH}:{mm}"
+            "text": "{HH} {mm}"
         },
         {
             "type": "label",
