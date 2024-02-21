@@ -127,7 +127,6 @@ electronics-11
 electronics-12
 electronics-13
 electronics-14
-electronics-15
 energy-1
 envelope-1
 f1-race-1
@@ -243,7 +242,6 @@ quote-16
 quote-17
 quote-18
 quote-19
-quote-20
 rain-1
 rain-2
 raspberry-01

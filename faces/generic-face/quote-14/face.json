@@ -6,13 +6,13 @@
     "items": [
         {
             "type": "label",
-            "font": "KeepCalmMedium-16.font",
+            "font": "KeepCalmMedium-20.font",
             "color": "#FAFAFA",
             "align": "TOP_MID",
             "textalign": "CENTER",
             "x": 0,
-            "y": 10,
-            "text": "\"Greed has poisoned\nmen's souls,\nhas barricaded\nthe world with hate,\nhas goose-stepped us\ninto misery and bloodshed.\"\nThe Great Dictator, 1940\nCharlie Chaplin"
+            "y": 20,
+            "text": "Every Monday\n\nis a good day\n\nfor a REVOLUTION!"
         },
         {
             "type": "label",
@@ -20,7 +20,7 @@
             "color": "#FAFAFA",
             "align": "BOTTOM_MID",
             "x": 0,
-            "y": 5,
+            "y": -5,
             "text": "{HH}:{mm}"
         }
     ]
