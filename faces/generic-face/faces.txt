@@ -28,6 +28,7 @@ asterix-1
 back-to-the-future-1
 back-to-the-future-2
 back-to-the-future-3
+back-to-the-future-4
 beach-1
 beer-1
 beer-2
@@ -147,6 +148,7 @@ funny-02
 funny-03
 gamepad-1
 google-1
+great-britain-01
 halloween-1
 ham-1
 ham-2
@@ -160,6 +162,9 @@ illusion-04
 illusion-05
 illusion-06
 india-1
+infinite-time-1
+infinite-time-2
+infinite-time-3
 ironman-1
 jaeger-1
 keyboard-1
@@ -167,6 +172,7 @@ keyboard-2
 keyboard-3
 kitt-1
 kitt-2
+kp
 la-linea-1
 la-linea-2
 lamp-01
@@ -211,6 +217,10 @@ nuclear-03
 nuclear-04
 nuclear-05
 nuclear-06
+omega-01
+omega-02
+omega-03
+omega-04
 pacman-1
 pacman-2
 paint-1
@@ -249,6 +259,7 @@ raspberry-02
 raspberry-03
 reaper-1
 road-1
+rolex-1
 schroedinger-1
 settlers-1
 settlers-2
@@ -290,6 +301,7 @@ terminal-5
 terminator-1
 terminator-2
 terminator-3
+terminator-4
 tesseract-1
 thgtg-1
 thgtg-2
@@ -304,6 +316,7 @@ tv-5
 tv-6
 twitter-1
 ufo-1
+us-army-1
 warning-01
 warning-02
 windows-01

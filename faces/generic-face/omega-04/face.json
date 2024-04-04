@@ -1,0 +1,55 @@
+{
+    "version": "1",
+    "update_interval_ms": 50,
+    "smooth_handles": true,
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "color": "#87F4CC",
+            "align": "CENTER",
+            "x": 0,
+            "y": 70,
+            "text": "{D}"
+        },
+        {
+            "type": "handle",
+            "source": "month",
+            "image": "handle_small.png",
+            "align": "CENTER",
+            "x": 50,
+            "y": -1,
+            "pivot_x": 1,
+            "pivot_y": 24
+        },
+        {
+            "type": "handle",
+            "source": "second",
+            "image": "handle_small.png",
+            "align": "CENTER",
+            "x": -51,
+            "y": -1,
+            "pivot_x": 1,
+            "pivot_y": 24
+        },
+        {
+            "type": "handle",
+            "source": "minute",
+            "image": "minute.png",
+            "align": "CENTER",
+            "pivot_x": 2,
+            "pivot_y": 93
+        },
+        {
+            "type": "handle",
+            "source": "hour",
+            "image": "hour.png",
+            "align": "CENTER",
+            "pivot_x": 3,
+            "pivot_y": 68
+        }
+    ]
+}

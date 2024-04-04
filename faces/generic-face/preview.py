@@ -49,7 +49,9 @@ _FS_CACHE_SIZE = const(2048)
 _TYPE_DIRECTORY = const(0x4000)
 
 _MENU_ITEM_WIDTH = const(200)
-_MENU_ITEM_HEIGHT = const(50)
+_MENU_ITEM_HEIGHT = const(40)
+
+_FILTER_TEXT = "Filter: {}"
 
 _SHOW_CENTER_POINT = False
 _CENTER_POINT_COLOR = lv.color_hex(0x0000FF)
@@ -80,6 +82,7 @@ _PLACEHOLDERS = {
     "{YYYY}": lambda context: f"{context.year:04d}",
     "{MM}": lambda context: f"{context.month:02d}",
     "{DD}": lambda context: f"{context.day:02d}",
+    "{D}": lambda context: f"{context.day}",
     "{HH}": lambda context: f"{context.hour:02d}",
     "{mm}": lambda context: f"{context.minute:02d}",
     "{ss}": lambda context: f"{context.second:02d}",
@@ -93,18 +96,24 @@ _PLACEHOLDERS = {
 }
 
 _HANDLES_DEFAULT_RANGES = {
+    "month": (1, 12, 0, 360),
+    "day": (1, 31, 0, 360),
     "hour": (0, 12, 0, 360),
     "minute": (0, 60, 0, 360),
-    "second": (0, 60, 0, 360)
+    "second": (0, 60, 0, 360),
 }
 
 _HANDLES_GET_VALUES = {
+    "month": lambda context: context.month - 1,
+    "day": lambda context: context.day - 1,
     "hour": lambda context: (context.hour % 12) + (context.minute / 60),
     "minute": lambda context: context.minute,
     "second": lambda context: context.second,
 }
 
 _HANDLES_GET_SMOOTH_VALUES = {
+    "month": lambda context: context.month + (context.day / 31) - 1,
+    "day": lambda context: context.day + (context.hour / 24) - 1,
     "hour": lambda context: (context.hour % 12) + (context.minute / 60) + (context.second / 3600),
     "minute": lambda context: context.minute + (context.second / 60),
     "second": lambda context: context.second + (context.millisecond / 1000),
@@ -229,9 +238,9 @@ class Renderer:
         for x in self._gifs:
             del x
 
-        for x in self._fonts.values():
-            lv.binfont_destroy(x)
-            del x
+        for id, font in self._fonts.items():
+            lv.tiny_ttf_destroy(font) if ".ttf/" in id else lv.binfont_destroy(font)
+            del font
 
         self._images.clear()
         self._handles.clear()
@@ -282,25 +291,36 @@ class Renderer:
         label.align(align, x, y)
         label.set_text("")
 
-        font_name = item.get("font", None)
-        if font_name:
-            font = _INTERNAL_FONTS.get(font_name, None)
-
-            if not font:
-                font_path = _FONTS_PATH + font_name
-                font = self._fonts.get(font_name, None)
-                if not font:
-                    font = lv.binfont_create(font_path)
-                    self._fonts[font_name] = font
-
-            if font:
-                label.set_style_text_font(font, 0)
+        font = self._load_font(item)
+        if font:
+            label.set_style_text_font(font, 0)
 
         self._labels.append({
             "lv_label": label,
             "text": text,
             "value": ""
         })
+
+    def _load_font(self, item: dict):
+        name: str = item.get("font", None)
+        if not name:
+            return None
+
+        font = _INTERNAL_FONTS.get(name, None)
+        if font:
+            return font
+
+        size = item.get("font_size", 0)
+        id = f"{name}/{size}"
+
+        font = self._fonts.get(id, None)
+        if font:
+            return font
+
+        path = _FONTS_PATH + name
+        font = lv.tiny_ttf_create_file(path, size) if name.endswith(".ttf") else lv.binfont_create(path)
+        self._fonts[id] = font
+        return font
 
     def _load_image(self, parent: lv.obj, item: dict, path: str):
         filename = item.get("file")
@@ -483,6 +503,7 @@ class App():
         self._center_point: lv.obj = None
         self._context: Context = None
         self._renderer: Renderer = None
+        self._face_selector_label: lv.label = ""
         self._face_selector_dropdown: lv.dropdown = None
         self._face_selector_filter: str = ""
         self._is_running = False
@@ -500,8 +521,7 @@ class App():
 
     async def loop(self, face_name=None):
         if face_name and face_name in self._faces and self._path_exists(f"{self._faces_path}/{face_name}"):
-            self._face_selector_dropdown.set_selected(
-                self._faces_filtered.index(face_name))
+            self._face_selector_dropdown.set_selected(self._faces_filtered.index(face_name))
             self._show_face(face_name)
         else:
             self._show_menu()
@@ -598,6 +618,12 @@ class App():
         dd.add_event_cb(self._face_selector_key_event_cb, lv.EVENT.KEY, None)
         self._face_selector_dropdown = dd
 
+        # Faces filter label
+        label = lv.label(screen)
+        label.set_width(_MENU_ITEM_WIDTH)
+        label.set_text(_FILTER_TEXT.format("-"))
+        self._face_selector_label = label
+
         # Show button
         button = lv.button(screen)
         button.set_size(_MENU_ITEM_WIDTH, _MENU_ITEM_HEIGHT)
@@ -647,7 +673,9 @@ class App():
             self._faces_path) if entry[1] == _TYPE_DIRECTORY and not entry[0].startswith("_")]
         faces.sort()
         self._faces_full_list = faces
-        self._faces = faces.copy()
+
+        filter = self._face_selector_filter
+        self._faces = [face for face in faces if face.startswith(filter)]
 
     def _face_selector_key_event_cb(self, event):
         filter = self._face_selector_filter
@@ -658,11 +686,14 @@ class App():
             filter = ""
         elif key == lv.KEY.BACKSPACE:
             filter = filter[:-1]
+        elif key == lv.KEY.ENTER:
+            pass
         elif char.isalpha:
             filter += char
 
         if filter != self._face_selector_filter:
             self._face_selector_filter = filter
+            self._face_selector_label.set_text(_FILTER_TEXT.format(filter or "-"))
 
             current_face_name = self._faces[self._face_selector_dropdown.get_selected()] if self._faces else ""
             self._faces = [face for face in self._faces_full_list if face.startswith(filter)]

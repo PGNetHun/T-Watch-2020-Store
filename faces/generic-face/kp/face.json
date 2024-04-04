@@ -1,0 +1,43 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "face.png"
+    },
+    "items": [
+        {
+            "type": "handle",
+            "source": "hour",
+            "image": "hour.png",
+            "align": "CENTER",
+            "pivot_x": 6,
+            "pivot_y": 83
+        },
+        {
+            "type": "handle",
+            "source": "minute",
+            "image": "minute.png",
+            "align": "CENTER",
+            "pivot_x": 5,
+            "pivot_y": 112
+        },
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-30.font",
+            "color": "#FFFFFF",
+            "align": "BOTTOM_MID",
+            "x": -100,
+            "y": 0,
+            "text": "{HH}"
+        },
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-30.font",
+            "color": "#FFFFFF",
+            "align": "BOTTOM_MID",
+            "x": 100,
+            "y": 0,
+            "text": "{mm}"
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.jpg"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "TERMINAT-40.font",
+            "color": "#0000",
+            "align": "RIGHT_MID",
+            "textalign": "CENTER",
+            "x": -15,
+            "y": 43,
+            "text": "{HH}\n{mm}"
+        },
+        {
+            "type": "label",
+            "font": "TERMINAT-40.font",
+            "color": "#FFFFFF",
+            "align": "RIGHT_MID",
+            "textalign": "CENTER",
+            "x": -18,
+            "y": 40,
+            "text": "{HH}\n{mm}"
+        }
+    ]
+}
