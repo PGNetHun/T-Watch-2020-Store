@@ -7,47 +7,37 @@
     "items": [
         {
             "type": "label",
-            "color": "#87F4CC",
+            "color": "#000000",
             "align": "CENTER",
             "x": 0,
-            "y": 70,
+            "y": 74,
             "text": "{D}"
         },
         {
             "type": "handle",
-            "source": "month",
-            "image": "handle_small.png",
-            "align": "CENTER",
-            "x": 50,
-            "y": -1,
-            "pivot_x": 1,
-            "pivot_y": 24
-        },
-        {
-            "type": "handle",
             "source": "second",
-            "image": "handle_small.png",
+            "image": "second.png",
             "align": "CENTER",
-            "x": -51,
-            "y": -1,
-            "pivot_x": 1,
-            "pivot_y": 24
+            "x": 0,
+            "y": 42,
+            "pivot_x": 4,
+            "pivot_y": 26
         },
         {
             "type": "handle",
             "source": "minute",
             "image": "minute.png",
             "align": "CENTER",
-            "pivot_x": 2,
-            "pivot_y": 93
+            "pivot_x": 7,
+            "pivot_y": 104
         },
         {
             "type": "handle",
             "source": "hour",
             "image": "hour.png",
             "align": "CENTER",
-            "pivot_x": 3,
-            "pivot_y": 68
+            "pivot_x": 6,
+            "pivot_y": 59
         }
     ]
 }

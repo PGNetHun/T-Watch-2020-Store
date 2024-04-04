@@ -1,0 +1,35 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "handle",
+            "source": "second",
+            "image": "second.png",
+            "align": "CENTER",
+            "x": 0,
+            "y": 48,
+            "pivot_x": 3,
+            "pivot_y": 25
+        },
+        {
+            "type": "handle",
+            "source": "minute",
+            "image": "minute.png",
+            "align": "CENTER",
+            "pivot_x": 5,
+            "pivot_y": 101
+        },
+        {
+            "type": "handle",
+            "source": "hour",
+            "image": "hour.png",
+            "align": "CENTER",
+            "pivot_x": 6,
+            "pivot_y": 73
+        }
+    ]
+}
