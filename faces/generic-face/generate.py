@@ -30,6 +30,9 @@ _SNAPSHOT_HEIGHT = 240
 _THUMBNAIL_WIDTH = 60
 _THUMBNAIL_HEIGHT = 60
 
+_JPEG_SNAPSHOT_QUALITY = 85
+_JPEG_THUMBNAIL_QUALITY = 85
+_JPEG_PROGRESSIVE = False
 
 # Get MicroPython executable file path
 try:
@@ -73,13 +76,13 @@ for name in face_names:
         with open(snapshot_path, "rb") as f:
             rawData = f.read()
             image = Image.frombuffer("RGBA", (_SNAPSHOT_WIDTH, _SNAPSHOT_HEIGHT), rawData, "raw", "BGRA", 0, 1).convert("RGB")
-            image.save(preview_path, quality=90, optimize=True, progressive=False)
+            image.save(preview_path, quality=_JPEG_SNAPSHOT_QUALITY, optimize=True, subsampling=2, progressive=_JPEG_PROGRESSIVE)
             image.close()
 
         # Create thumbnail image from preview file
         with Image.open(preview_path, mode="r") as image:
             resized = image.resize((_THUMBNAIL_WIDTH, _THUMBNAIL_HEIGHT))
-            resized.save(thumbnail_path, quality=90, optimize=True, progressive=False)
+            resized.save(thumbnail_path, quality=_JPEG_THUMBNAIL_QUALITY, optimize=True, subsampling=2, progressive=_JPEG_PROGRESSIVE)
 
         # Delete RAW file
         os.remove(snapshot_path)
