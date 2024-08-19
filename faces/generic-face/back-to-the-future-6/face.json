@@ -1,0 +1,41 @@
+{
+    "version": "1",
+    "smooth_handles": true,
+    "update_interval_ms": 50,
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "handle",
+            "source": "hour",
+            "image": "hour.png",
+            "align": "CENTER",
+            "x": 3,
+            "y": 0,
+            "pivot_x": 9,
+            "pivot_y": 49
+        },
+        {
+            "type": "handle",
+            "source": "minute",
+            "image": "minute.png",
+            "align": "CENTER",
+            "x": 3,
+            "y": 0,
+            "pivot_x": 7,
+            "pivot_y": 71
+        },
+        {
+            "type": "handle",
+            "source": "second",
+            "image": "second.png",
+            "align": "CENTER",
+            "x": 3,
+            "y": 0,
+            "pivot_x": 7,
+            "pivot_y": 77
+        }
+    ]
+}

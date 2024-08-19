@@ -1,0 +1,37 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "LCD-60.font",
+            "color": "#7D8171",
+            "align": "CENTER",
+            "x": 40,
+            "y": -40,
+            "text": "88:88"
+        },
+        {
+            "type": "label",
+            "font": "LCD-60.font",
+            "color": "#000000",
+            "align": "CENTER",
+            "x": 40,
+            "y": -40,
+            "text": "{HH}:{mm}"
+        },
+        {
+            "type": "handle",
+            "source": "second",
+            "image": "handle.png",
+            "align": "CENTER",
+            "x": -80,
+            "y": -51,
+            "pivot_x": 1,
+            "pivot_y": 29
+        }
+    ]
+}

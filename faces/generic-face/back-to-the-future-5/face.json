@@ -1,0 +1,36 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#040404",
+        "image": "background.jpg"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "BackToTheFuture-74.font",
+            "color": "#E6352D",
+            "align": "BOTTOM_MID",
+            "x": -4,
+            "y": -34,
+            "text": "{HH}-{mm}"
+        },
+        {
+            "type": "label",
+            "font": "BackToTheFuture-74.font",
+            "color": "#ED893D",
+            "align": "BOTTOM_MID",
+            "x": -2,
+            "y": -32,
+            "text": "{HH}-{mm}"
+        },
+        {
+            "type": "label",
+            "font": "BackToTheFuture-74.font",
+            "color": "#FDDE39",
+            "align": "BOTTOM_MID",
+            "x": 0,
+            "y": -30,
+            "text": "{HH}-{mm}"
+        }
+    ]
+}

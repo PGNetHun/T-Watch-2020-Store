@@ -7,26 +7,26 @@
     "items": [
         {
             "type": "handle",
-            "source": "hour",
-            "image": "hour.png",
-            "align": "CENTER",
-            "pivot_x": 6,
-            "pivot_y": 49
-        },
-        {
-            "type": "handle",
             "source": "minute",
             "image": "minute.png",
             "align": "CENTER",
+            "pivot_x": 7,
+            "pivot_y": 100
+        },
+        {
+            "type": "handle",
+            "source": "hour",
+            "image": "hour.png",
+            "align": "CENTER",
             "pivot_x": 8,
-            "pivot_y": 102
+            "pivot_y": 61
         },
         {
             "type": "handle",
             "source": "second",
             "image": "second.png",
             "align": "CENTER",
-            "pivot_x": 5,
+            "pivot_x": 3,
             "pivot_y": 102
         }
     ]

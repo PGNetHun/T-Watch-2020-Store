@@ -1,0 +1,27 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "desk.jpg"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-60.font",
+            "color": "#FAF7EE",
+            "align": "CENTER",
+            "x": 0,
+            "y": 51,
+            "text": "{HH}:{mm}"
+        },
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-30.font",
+            "color": "#FAF7EE",
+            "align": "CENTER",
+            "x": 0,
+            "y": 102,
+            "text": "{YYYY}-{MM}-{DD}"
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "MinecraftFifty-Solid-74.font",
+            "color": "#A0A0A0",
+            "align": "BOTTOM_MID",
+            "x": -3,
+            "y": -3,
+            "text": "{HH}:{mm}"
+        },
+        {
+            "type": "label",
+            "font": "MinecraftFifty-Solid-74.font",
+            "color": "#000000",
+            "align": "BOTTOM_MID",
+            "x": 5,
+            "y": 5,
+            "text": "{HH}:{mm}"
+        },
+        {
+            "type": "label",
+            "font": "MinecraftFifty-Solid-74.font",
+            "color": "#808080",
+            "align": "BOTTOM_MID",
+            "x": 0,
+            "y": 0,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}

@@ -1,0 +1,27 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "minesweeper.png"  
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "LCD-44.font",
+            "color": "#FB0007",
+            "align": "CENTER",
+            "x": -62,
+            "y": -14,
+            "text": "0{HH}"
+        },
+        {
+            "type": "label",
+            "font": "LCD-44.font",
+            "color": "#FB0007",
+            "align": "CENTER",
+            "x": 60,
+            "y": -14,
+            "text": "0{mm}"
+        }
+    ]
+}

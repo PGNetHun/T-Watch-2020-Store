@@ -8,10 +8,11 @@ from PIL import Image
 
 _USAGE = """
 Usage:
-    python3 generate.py [micropython executable]
+    python3 generate.py [micropython executable] [faces directory]
 
     [micropython executable]    Path of Unix port MicroPython executable.
                                 For example: "~/src/lv_micropython/ports/unix/build-standard/micropython"
+    [faces directory]           Path of faces directory. Optional.
 """
 
 _LIST_FILE = "faces.txt"
@@ -37,12 +38,13 @@ _JPEG_PROGRESSIVE = False
 # Get MicroPython executable file path
 try:
     mpy = sys.argv[1]
+    path = sys.argv[2] if len(sys.argv) > 2 else "."
 except:
     print(_USAGE)
     sys.exit(1)
 
 # Save list of faces
-face_names = [e.name for e in os.scandir(".") if e.is_dir() and not e.name.startswith("_")]
+face_names = [e.name for e in os.scandir(path) if e.is_dir() and not e.name.startswith("_")]
 face_names.sort()
 with open(_LIST_FILE, "w") as f:
     f.write("\n".join(face_names))

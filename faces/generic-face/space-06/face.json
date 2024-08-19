@@ -1,0 +1,27 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "nasalization-50.font",
+            "color": "#D2D2D2",
+            "align": "TOP_LEFT",
+            "x": 5,
+            "y": 5,
+            "text": "{HH}"
+        },
+        {
+            "type": "label",
+            "font": "nasalization-50.font",
+            "color": "#D2D2D2",
+            "align": "TOP_RIGHT",
+            "x": -5,
+            "y": 5,
+            "text": "{mm}"
+        }
+    ]
+}
