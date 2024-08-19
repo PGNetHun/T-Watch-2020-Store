@@ -1,0 +1,59 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "color": "#000000",
+            "align": "CENTER",
+            "x": -8,
+            "y": -38,
+            "text": "{D#0}"
+        },
+        {
+            "type": "label",
+            "color": "#000000",
+            "align": "CENTER",
+            "x": 8,
+            "y": -38,
+            "text": "{D#1}"
+        },
+        {
+            "type": "handle",
+            "source": "month",
+            "image": "subdial-2.png",
+            "align": "CENTER",
+            "x": 1,
+            "y": 49,
+            "pivot_x": 6,
+            "pivot_y": 22
+        },
+        {
+            "type": "handle",
+            "source": "minute",
+            "image": "minutes.png",
+            "align": "CENTER",
+            "pivot_x": 7,
+            "pivot_y": 90
+        },
+        {
+            "type": "handle",
+            "source": "hour",
+            "image": "hours.png",
+            "align": "CENTER",
+            "pivot_x": 10,
+            "pivot_y": 65
+        },
+        {
+            "type": "handle",
+            "source": "second",
+            "image": "seconds.png",
+            "align": "CENTER",
+            "pivot_x": 6,
+            "pivot_y": 90
+        }
+    ]
+}

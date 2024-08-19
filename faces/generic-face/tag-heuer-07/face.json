@@ -1,0 +1,51 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "color": "#000000",
+            "align": "CENTER",
+            "x": 0,
+            "y": 93,
+            "text": "{D}"
+        },
+        {
+            "type": "handle",
+            "source": "day1",
+            "image": "sub-dials.png",
+            "align": "CENTER",
+            "x": -52,
+            "pivot_x": 4,
+            "pivot_y": 26
+        },
+        {
+            "type": "handle",
+            "source": "second",
+            "image": "sub-dials.png",
+            "align": "CENTER",
+            "x": 51,
+            "pivot_x": 4,
+            "pivot_y": 26
+        },
+        {
+            "type": "handle",
+            "source": "minute",
+            "image": "minute.png",
+            "align": "CENTER",
+            "pivot_x": 7,
+            "pivot_y": 104
+        },
+        {
+            "type": "handle",
+            "source": "hour",
+            "image": "hour.png",
+            "align": "CENTER",
+            "pivot_x": 6,
+            "pivot_y": 59
+        }
+    ]
+}

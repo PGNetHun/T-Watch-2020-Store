@@ -1,30 +1,18 @@
 {
     "version": "1",
-    "smooth_handles": true,
     "background": {
-        "color": "#000000"
+        "color": "#000000",
+        "image": "background.jpg"
     },
     "items": [
         {
-            "type": "gif",
-            "file": "earth.gif",
-            "align": "CENTER"
-        },
-        {
-            "type": "handle",
-            "source": "hour",
-            "image": "iss.png",
+            "type": "label",
+            "font": "KeepCalmMedium-60.font",
+            "color": "#FAFAFA",
             "align": "CENTER",
-            "pivot_x": 32,
-            "pivot_y": 120
-        },
-        {
-            "type": "handle",
-            "source": "minute",
-            "image": "spaceshuttle.png",
-            "align": "CENTER",
-            "pivot_x": 24,
-            "pivot_y": 100
+            "x": 0,
+            "y": -40,
+            "text": "{HH}:{mm}"
         }
     ]
 }

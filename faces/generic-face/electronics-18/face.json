@@ -1,0 +1,36 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000",
+        "image": "background.png"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-50.font",
+            "color": "#00F800",
+            "align": "CENTER",
+            "x": 0,
+            "y": -20,
+            "text": "{HH}:{mm}"
+        },
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-24.font",
+            "color": "#00F800",
+            "align": "CENTER",
+            "x": 0,
+            "y": 30,
+            "text": "{YYYY}-{MM}-{DD}"
+        },
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-20.font",
+            "color": "#00F800",
+            "align": "CENTER",
+            "x": 0,
+            "y": 70,
+            "text": "{battery_percent}%"
+        }
+    ]
+}

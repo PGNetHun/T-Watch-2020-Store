@@ -59,18 +59,15 @@ _CENTER_POINT_COLOR = lv.color_hex(0x0000FF)
 # ************************************
 # Face implementation
 # ************************************
-_FONTS_PATH = _DRIVE_LETTER + ":fonts/"
+_LVGL_FONTS_PATH = _DRIVE_LETTER + ":fonts/"
 
 _DEFAULT_UPDATE_INTERVAL_MS = const(1000)
 
-_WEEK_DAYS = ["Monday", "Tuesday", "Wednesday",
-              "Thursday", "Friday", "Saturday", "Sunday"]
+_WEEK_DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 _WEEK_DAYS_SHORT = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"]
 
-_MONTHS = ["January", "February", "March", "April", "May", "June",
-           "July", "August", "September", "October", "November", "December"]
-_MONTHS_SHORT = ["JAN", "FEB", "MAR", "APR", "MAY",
-                 "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
+_MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+_MONTHS_SHORT = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
 
 _INTERNAL_FONTS = {
     ".default": lv.font_default,
@@ -82,7 +79,10 @@ _PLACEHOLDERS = {
     "{YYYY}": lambda context: f"{context.year:04d}",
     "{MM}": lambda context: f"{context.month:02d}",
     "{DD}": lambda context: f"{context.day:02d}",
+    "{M}": lambda context: f"{context.month}",
     "{D}": lambda context: f"{context.day}",
+    "{D#0}": lambda context: f"{context.day:02d}"[0],
+    "{D#1}": lambda context: f"{context.day:02d}"[1],
     "{HH}": lambda context: f"{context.hour:02d}",
     "{mm}": lambda context: f"{context.minute:02d}",
     "{ss}": lambda context: f"{context.second:02d}",
@@ -97,7 +97,8 @@ _PLACEHOLDERS = {
 
 _HANDLES_DEFAULT_RANGES = {
     "month": (1, 12, 0, 360),
-    "day": (1, 31, 0, 360),
+    "day0": (1, 31, 0, 360),
+    "day1": (1, 31, 0, 360),
     "hour": (0, 12, 0, 360),
     "minute": (0, 60, 0, 360),
     "second": (0, 60, 0, 360),
@@ -105,7 +106,8 @@ _HANDLES_DEFAULT_RANGES = {
 
 _HANDLES_GET_VALUES = {
     "month": lambda context: context.month - 1,
-    "day": lambda context: context.day - 1,
+    "day0": lambda context: context.day - 1,
+    "day1": lambda context: context.day,
     "hour": lambda context: (context.hour % 12) + (context.minute / 60),
     "minute": lambda context: context.minute,
     "second": lambda context: context.second,
@@ -113,7 +115,8 @@ _HANDLES_GET_VALUES = {
 
 _HANDLES_GET_SMOOTH_VALUES = {
     "month": lambda context: context.month + (context.day / 31) - 1,
-    "day": lambda context: context.day + (context.hour / 24) - 1,
+    "day0": lambda context: context.day + (context.hour / 24) - 1,
+    "day1": lambda context: context.day + (context.hour / 24),
     "hour": lambda context: (context.hour % 12) + (context.minute / 60) + (context.second / 3600),
     "minute": lambda context: context.minute + (context.second / 60),
     "second": lambda context: context.second + (context.millisecond / 1000),
@@ -148,8 +151,7 @@ class Context:
             time_tuple = time.localtime()
 
         prev_second = self.second
-        self.year, self.month, self.day, self.hour, self.minute, self.second, self.weekday, self.yearday = time_tuple[
-            0:8]
+        self.year, self.month, self.day, self.hour, self.minute, self.second, self.weekday, self.yearday = time_tuple[0:8]
 
         # Add "virtual" miliseconds (because 'utime.localtime()' does not return it):
         current_ticks_ms = time.ticks_ms()
@@ -192,8 +194,7 @@ class Renderer:
         if config["version"] != "1":
             raise Exception("Not supported version: " + config["version"])
 
-        self._update_interval_ms = int(config.get(
-            "update_interval_ms", _DEFAULT_UPDATE_INTERVAL_MS))
+        self._update_interval_ms = int(config.get("update_interval_ms", _DEFAULT_UPDATE_INTERVAL_MS))
         self._use_smooth_handles = config.get("smooth_handles", False)
 
         # Set background color and image
@@ -317,8 +318,13 @@ class Renderer:
         if font:
             return font
 
-        path = _FONTS_PATH + name
-        font = lv.tiny_ttf_create_file(path, size) if name.endswith(".ttf") else lv.binfont_create(path)
+        path = _LVGL_FONTS_PATH + name
+        try:
+            font = lv.tiny_ttf_create_file(path, size) if name.endswith(".ttf") else lv.binfont_create(path)
+        except Exception as e:
+            print(f"Error loading font: {name}", e)
+            return None
+
         self._fonts[id] = font
         return font
 
@@ -339,6 +345,7 @@ class Renderer:
 
         gif = lv.gif(parent)
         gif.align(align, x, y)
+
         gif.set_src(f"{_DRIVE_LETTER}:{path}/{filename}")
         self._gifs.append(gif)
 
@@ -652,8 +659,7 @@ class App():
 
     def _init_face_screen(self):
         self._face_screen = self._create_screen()
-        self._face_screen.add_event_cb(
-            self._face_screen_click_cb, lv.EVENT.CLICKED, None)
+        self._face_screen.add_event_cb(self._face_screen_click_cb, lv.EVENT.CLICKED, None)
 
     def _init_center_point(self):
         c = lv.obj(self._face_screen)
@@ -669,8 +675,7 @@ class App():
         self._renderer = Renderer(self._face_screen)
 
     def _load_faces_list(self):
-        faces = [entry[0] for entry in os.ilistdir(
-            self._faces_path) if entry[1] == _TYPE_DIRECTORY and not entry[0].startswith("_")]
+        faces = [entry[0] for entry in os.ilistdir(self._faces_path) if entry[1] == _TYPE_DIRECTORY and not entry[0].startswith("_")]
         faces.sort()
         self._faces_full_list = faces
 

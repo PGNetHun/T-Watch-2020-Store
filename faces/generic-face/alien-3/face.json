@@ -7,11 +7,11 @@
     "items": [
         {
             "type": "label",
-            "font": "MIDDST__-60.font",
-            "color": "#DBD0BC",
+            "font": "Alien-40.font",
+            "color": "#528DCD",
             "align": "TOP_MID",
             "x": 0,
-            "y": 6,
+            "y": 10,
             "text": "{HH}:{mm}"
         }
     ]

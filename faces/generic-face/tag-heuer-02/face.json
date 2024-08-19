@@ -7,47 +7,45 @@
     "items": [
         {
             "type": "handle",
-            "source": "month",
-            "image": "month_day.png",
+            "source": "day1",
+            "image": "subdial-1.png",
             "align": "CENTER",
-            "x": -1,
-            "y": 50,
-            "pivot_x": 3,
-            "pivot_y": 27
+            "y": -52,
+            "pivot_x": 5,
+            "pivot_y": 30
         },
         {
             "type": "handle",
-            "source": "day1",
-            "image": "month_day.png",
+            "source": "month",
+            "image": "subdial-2.png",
             "align": "CENTER",
-            "x": 52,
-            "y": -1,
-            "pivot_x": 3,
-            "pivot_y": 27
+            "y": 50,
+            "pivot_x": 6,
+            "pivot_y": 22
         },
         {
             "type": "handle",
             "source": "minute",
-            "image": "minute.png",
+            "image": "minutes.png",
             "align": "CENTER",
-            "pivot_x": 6,
-            "pivot_y": 85
+            "pivot_x": 7,
+            "pivot_y": 90
         },
         {
             "type": "handle",
             "source": "hour",
-            "image": "hour.png",
+            "image": "hours.png",
             "align": "CENTER",
-            "pivot_x": 7,
-            "pivot_y": 61
+            "pivot_x": 10,
+            "pivot_y": 65
         },
         {
             "type": "handle",
             "source": "second",
-            "image": "second.png",
+            "image": "seconds.png",
             "align": "CENTER",
             "pivot_x": 6,
-            "pivot_y": 86
+            "pivot_y": 90
         }
     ]
 }

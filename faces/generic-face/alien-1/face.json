@@ -7,7 +7,7 @@
     "items": [
         {
             "type": "label",
-            "font": "AlienPlanet-40.font",
+            "font": "Alien-36.font",
             "color": "#FFFFFF",
             "align": "CENTER",
             "x": 0,

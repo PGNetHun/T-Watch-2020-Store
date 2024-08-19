@@ -7,7 +7,7 @@
     "items": [
         {
             "type": "label",
-            "font": "mikey_matrix_42.font",
+            "font": "mikey_matrix-42.font",
             "color": "#DDDDDD",
             "align": "TOP_MID",
             "x": -3,

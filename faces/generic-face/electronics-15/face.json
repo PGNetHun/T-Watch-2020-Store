@@ -2,16 +2,16 @@
     "version": "1",
     "background": {
         "color": "#000000",
-        "image": "background.jpg"
+        "image": "background.png"
     },
     "items": [
         {
             "type": "label",
-            "font": "MIDDST__-60.font",
-            "color": "#DBD0BC",
-            "align": "TOP_MID",
+            "font": "squealer-50.font",
+            "color": "#FEFEFE",
+            "align": "CENTER",
             "x": 0,
-            "y": 6,
+            "y": 85,
             "text": "{HH}:{mm}"
         }
     ]
