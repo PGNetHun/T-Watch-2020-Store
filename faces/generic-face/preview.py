@@ -97,29 +97,32 @@ _PLACEHOLDERS = {
 
 _HANDLES_DEFAULT_RANGES = {
     "month": (1, 12, 0, 360),
+    "day": (1, 31, 0, 360),
     "day0": (1, 31, 0, 360),
     "day1": (1, 31, 0, 360),
     "hour": (0, 12, 0, 360),
     "minute": (0, 60, 0, 360),
-    "second": (0, 60, 0, 360),
+    "second": (0, 60, 0, 360)
 }
 
 _HANDLES_GET_VALUES = {
     "month": lambda context: context.month - 1,
+    "day": lambda context: context.day - 1,
     "day0": lambda context: context.day - 1,
     "day1": lambda context: context.day,
     "hour": lambda context: (context.hour % 12) + (context.minute / 60),
     "minute": lambda context: context.minute,
-    "second": lambda context: context.second,
+    "second": lambda context: context.second
 }
 
 _HANDLES_GET_SMOOTH_VALUES = {
     "month": lambda context: context.month + (context.day / 31) - 1,
+    "day": lambda context: context.day + (context.hour / 24) - 1,
     "day0": lambda context: context.day + (context.hour / 24) - 1,
     "day1": lambda context: context.day + (context.hour / 24),
     "hour": lambda context: (context.hour % 12) + (context.minute / 60) + (context.second / 3600),
     "minute": lambda context: context.minute + (context.second / 60),
-    "second": lambda context: context.second + (context.millisecond / 1000),
+    "second": lambda context: context.second + (context.millisecond / 1000)
 }
 
 # Shortcuts to improve lookup performance
@@ -172,6 +175,7 @@ class Renderer:
         self._update_interval_ms = _DEFAULT_UPDATE_INTERVAL_MS
         self._use_smooth_handles: bool = False
         self._fonts = {}
+        self._image_fonts = []
         self._labels = []
         self._handles = []
         self._images = []
@@ -243,11 +247,16 @@ class Renderer:
             lv.tiny_ttf_destroy(font) if ".ttf/" in id else lv.binfont_destroy(font)
             del font
 
+        for font in self._image_fonts:
+            lv.imgfont_destroy(font)
+            del font
+
         self._images.clear()
         self._handles.clear()
         self._gifs.clear()
         self._labels.clear()
         self._fonts.clear()
+        self._image_fonts.clear()
 
     def get_update_interval_ms(self):
         return self._update_interval_ms
@@ -292,7 +301,7 @@ class Renderer:
         label.align(align, x, y)
         label.set_text("")
 
-        font = self._load_font(item)
+        font = self._load_font(item) or self._load_image_font(item, path)
         if font:
             label.set_style_text_font(font, 0)
 
@@ -328,6 +337,19 @@ class Renderer:
         self._fonts[id] = font
         return font
 
+    def _load_image_font(self, item: dict, path: str):
+        if "imagefont" not in item:
+            return None
+
+        user_data = item.get("imagefont", {})
+        user_data["path"] = item.get("path", path)
+        size = item.get("font_size", 0)
+
+        font = lv.imgfont_create(size, self._get_imgfont_path, user_data)
+        self._image_fonts.append(font)
+
+        return font
+
     def _load_image(self, parent: lv.obj, item: dict, path: str):
         filename = item.get("file")
         x = item.get("x", 0)
@@ -345,7 +367,6 @@ class Renderer:
 
         gif = lv.gif(parent)
         gif.align(align, x, y)
-
         gif.set_src(f"{_DRIVE_LETTER}:{path}/{filename}")
         self._gifs.append(gif)
 
@@ -380,6 +401,13 @@ class Renderer:
             "source": source,
             "ranges": ranges
         })
+
+    def _get_imgfont_path(self, font, unicode, unicode_next, offset_y, user_data):
+        user_data = user_data.__cast__()
+        path = user_data.get("path", "")
+        image_file = user_data.get(chr(unicode), None)
+
+        return f"{_DRIVE_LETTER}:{path}/{image_file}" if image_file else None
 
     def _hex_color(self, value):
         color_int = int(value.lstrip("#"), 16)

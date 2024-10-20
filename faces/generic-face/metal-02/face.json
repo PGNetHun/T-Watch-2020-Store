@@ -10,7 +10,7 @@
             "font": "FoxCavalier-50.font",
             "color": "#2E2E2E",
             "align": "CENTER",
-            "x": -5,
+            "x": 0,
             "y": -25,
             "text": "{HH}:{mm}"
         },

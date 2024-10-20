@@ -1,0 +1,27 @@
+{
+    "version": "1",
+    "background": {
+        "color": "#000000"
+    },
+    "items": [
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-16.font",
+            "color": "#FAFAFA",
+            "align": "TOP_MID",
+            "textalign": "CENTER",
+            "x": 0,
+            "y": 5,
+            "text": "\"What is the cost of lies?\nIt's not that we'll mistake\nthem for the truth.\nThe real danger is\nthat if we hear enough lies,\nthen we no longer\nrecognize the truth at all.\"\nValery Legasov (Chernobyl)"
+        },
+        {
+            "type": "label",
+            "font": "KeepCalmMedium-60.font",
+            "color": "#FAFAFA",
+            "align": "BOTTOM_MID",
+            "x": 0,
+            "y": 0,
+            "text": "{HH}:{mm}"
+        }
+    ]
+}
