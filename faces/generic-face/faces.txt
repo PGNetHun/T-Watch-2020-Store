@@ -77,6 +77,7 @@ chip-6
 chip-7
 christmas-01
 christmas-02
+christmas-03
 chrome-dino
 city-01
 city-02
@@ -179,6 +180,8 @@ gamepad-1
 gold-01
 gold-02
 gold-03
+gold-04
+gold-05
 google-1
 great-britain-01
 halloween-1
