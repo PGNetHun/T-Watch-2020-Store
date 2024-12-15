@@ -27,6 +27,7 @@ arduino-3
 arduino-4
 army-1
 asterix-1
+avicii-1
 back-to-the-future-1
 back-to-the-future-2
 back-to-the-future-3
@@ -236,6 +237,7 @@ metal-07
 metal-08
 metal-09
 metal-10
+metal-11
 metro-exodus-1
 metro-exodus-2
 micropython-1

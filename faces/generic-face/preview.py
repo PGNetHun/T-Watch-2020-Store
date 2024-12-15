@@ -345,7 +345,7 @@ class Renderer:
         user_data["path"] = item.get("path", path)
         size = item.get("font_size", 0)
 
-        font = lv.imgfont_create(size, self._get_imgfont_path, user_data)
+        font = lv.imgfont_create(size, self._get_image_font_path, user_data)
         self._image_fonts.append(font)
 
         return font
@@ -402,7 +402,7 @@ class Renderer:
             "ranges": ranges
         })
 
-    def _get_imgfont_path(self, font, unicode, unicode_next, offset_y, user_data):
+    def _get_image_font_path(self, font, unicode, unicode_next, offset_y, user_data):
         user_data = user_data.__cast__()
         path = user_data.get("path", "")
         image_file = user_data.get(chr(unicode), None)
